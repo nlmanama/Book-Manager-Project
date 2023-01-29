@@ -21,5 +21,12 @@ applications that already exists. Goodreads for one does not allow users to tag 
 library by tags. It has limited searching function that only allows you to sort through your all books by several 
 metrics, but does not allow you to filter through your library and only show the books you want. Other alternatives 
 such as StoryGraph has other issues such as the interface being difficult to navigate, and still not having all the 
-sorting functionalities that I would find useful in managing my library. Hence, an application that allows the 
+filtering functionalities that I would find useful in managing my library. Hence, an application that allows the 
 storing and sorting of books in an easy way would be the ideal project to create.
+
+### User stories
+- As a user, I want to be able to add a book to my library
+- As a user, I want to be able to add attributes (such as author, ratings...) to my books
+- As a user, I want to be able to create unique tags and assign them to books
+- As a user, I want to be able to remove a book from my library
+- As a user, I want to be able to search books by filtering my library with which tags I want to include 
