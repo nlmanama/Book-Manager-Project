@@ -1,6 +1,8 @@
 package ui;
 
 import model.Library;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -34,11 +36,44 @@ public class Main {
     }
 
     private static void addBook() {
-        // stub
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Title of book: ");
+        String title = scan.nextLine();
+
+        System.out.println("Author of book: ");
+        String author = scan.nextLine();
+
+        System.out.println("Rating: ");
+        int rating = Integer.parseInt(scan.nextLine());
+
+        System.out.println("Date read:");
+        int date = Integer.parseInt(scan.nextLine());
+
+        System.out.println("Genre: ");
+        String genre = scan.nextLine();
+
+        library.addBook(title, author,rating, date, genre);
     }
 
     private static void searchAuthor() {
-        // stub
+        Scanner scan = new Scanner(System.in);
+
+        System.out.println("Name of author to search: ");
+        String author = scan.nextLine();
+
+        ArrayList booksFound = library.findAuthor(author);
+
+        if (booksFound.size() == 0) {
+            System.out.println("Sorry, no books by that author in the library.");
+        } else {
+            System.out.println("The books by that author are: ");
+            outputAL(booksFound);
+        }
     }
 
+    private static void outputAL(ArrayList al) {
+        for (int i = 0; i < al.size(); i++) {
+            System.out.println(al.get(i));
+        }
+    }
 }
