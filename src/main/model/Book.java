@@ -37,4 +37,23 @@ public class Book {
     public String getAuthor() {
         return author;
     }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public int getDateRead() {
+        return dateRead;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public ArrayList getTags() {
+        return tags;
+    }
+
+
 }
+

@@ -33,4 +33,8 @@ public class Library {
 
         return bookName;
     }
+
+    public ArrayList getBooks() {
+        return books;
+    }
 }
