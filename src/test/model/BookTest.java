@@ -18,6 +18,8 @@ public class BookTest {
     void constructorTest() {
         assertEquals("Book", book1.getTitle());
         assertEquals("Author", book1.getAuthor());
+        assertEquals(5, book1.getRating());
+        assertEquals(2023, book1.getDateRead());
         assertTrue(book1.getTags().isEmpty());
     }
 
