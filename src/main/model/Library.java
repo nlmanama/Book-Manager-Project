@@ -34,6 +34,38 @@ public class Library {
         return bookName;
     }
 
+    // REQUIRES: title must be a String
+    // EFFECTS: search through the list of books and find all books with the name
+    public ArrayList findTitle(String title) {
+        ArrayList<String> bookName = new ArrayList<>();
+        // stub
+        return bookName;
+    }
+
+    // REQUIRES: genre must be a String
+    // EFFECTS: search through the list of books and find all books in the genre
+    public ArrayList findGenre(String genre) {
+        ArrayList<String> bookName = new ArrayList<>();
+        // stub
+        return bookName;
+    }
+
+    // REQUIRES: rating be an integer
+    // EFFECTS: search through the list of books and find all books with the same rating
+    public ArrayList findRating(int rating) {
+        ArrayList<String> bookName = new ArrayList<>();
+        // stub
+        return bookName;
+    }
+
+    // REQUIRES: date be an integer
+    // EFFECTS: search through the list of books and find all books read in the same year
+    public ArrayList findDate(int date) {
+        ArrayList<String> bookName = new ArrayList<>();
+        // stub
+        return bookName;
+    }
+
     public ArrayList getBooks() {
         return books;
     }
