@@ -11,10 +11,13 @@ public class LibraryApp {
     private Library library;
     private ArrayList<String> acceptedInputs;
 
+    // EFFECTS: run the library
     public LibraryApp() {
         runLibrary();
     }
 
+    // MODIFIES: this
+    // EFFECTS: execute each function of the application depending on user input
     private void runLibrary() {
         library = new Library();
         boolean stop = false;
@@ -35,6 +38,7 @@ public class LibraryApp {
         }
     }
 
+    // EFFECTS: prompts for, accept and return the appropriate user input
     private String getInput() {
         acceptedInputs = new ArrayList<>(Arrays.asList("1", "2", "E"));
         Scanner scan = new Scanner(System.in);
@@ -51,7 +55,9 @@ public class LibraryApp {
         return input;
     }
 
-
+    // MODIFIES: this
+    // EFFECTS: asks for user input for details needed to create Book object,
+    //          create the book and add to the library's list of books
     private void addBook() {
         Scanner scan = new Scanner(System.in);
         System.out.println("Title of book: ");
@@ -77,6 +83,7 @@ public class LibraryApp {
         library.addBook(title, author,rating, date, genre);
     }
 
+    // EFFECTS: accept user input for a name, search the library's list of books for books with said author's name
     private void searchAuthor() {
         Scanner scan = new Scanner(System.in);
 
@@ -93,6 +100,7 @@ public class LibraryApp {
         }
     }
 
+    // EFFECTS: print all elements in an ArrayList
     private void outputAL(ArrayList al) {
         for (int i = 0; i < al.size(); i++) {
             System.out.println(al.get(i));
