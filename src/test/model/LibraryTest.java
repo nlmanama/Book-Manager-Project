@@ -66,4 +66,116 @@ public class LibraryTest {
         assertEquals("Book1", books.get(0));
         assertEquals("Book3", books.get(1));
     }
+
+    @Test
+    void findTitleNoneExistTest() {
+        lib1.addBook("Book1", "Author1", 5, 2023, "Gen1");
+        lib1.addBook("Book2", "Author2", 4, 2024, "Gen2");
+        ArrayList<String> books = lib1.findTitle("Book3");
+        assertTrue(books.isEmpty());
+    }
+
+    @Test
+    void findTitleOneBookTest() {
+        lib1.addBook("Book1", "Author1", 5, 2023, "Gen1");
+        lib1.addBook("Book2", "Author2", 4, 2024, "Gen2");
+        ArrayList<String> books = lib1.findTitle("Book2");
+        assertEquals(1, books.size());
+        assertEquals("Book2", books.get(0));
+    }
+
+    @Test
+    void findTitleMultipleBooksTest() {
+        lib1.addBook("Book1", "Author1", 5, 2023, "Gen1");
+        lib1.addBook("Book2", "Author2", 4, 2024, "Gen2");
+        lib1.addBook("Book1", "Author1", 5, 2025, "Gen1");
+        ArrayList<String> books = lib1.findTitle("Book1");
+        assertEquals(2, books.size());
+        assertEquals("Book1", books.get(0));
+        assertEquals("Book1", books.get(1));
+    }
+
+    @Test
+    void findGenreNoneExistTest() {
+        lib1.addBook("Book1", "Author1", 5, 2023, "Gen1");
+        lib1.addBook("Book2", "Author2", 4, 2024, "Gen2");
+        ArrayList<String> books = lib1.findGenre("Gen4");
+        assertTrue(books.isEmpty());
+    }
+
+    @Test
+    void findGenreOneBookTest() {
+        lib1.addBook("Book1", "Author1", 5, 2023, "Gen1");
+        lib1.addBook("Book2", "Author2", 4, 2024, "Gen2");
+        ArrayList<String> books = lib1.findGenre("Gen2");
+        assertEquals(1, books.size());
+        assertEquals("Book2", books.get(0));
+    }
+
+    @Test
+    void findGenreMultipleBooksTest() {
+        lib1.addBook("Book1", "Author1", 5, 2023, "Gen1");
+        lib1.addBook("Book2", "Author2", 4, 2024, "Gen2");
+        lib1.addBook("Book3", "Author1", 5, 2025, "Gen1");
+        ArrayList<String> books = lib1.findGenre("Gen1");
+        assertEquals(2, books.size());
+        assertEquals("Book1", books.get(0));
+        assertEquals("Book3", books.get(1));
+    }
+
+    @Test
+    void findRatingNoneExistTest() {
+        lib1.addBook("Book1", "Author1", 5, 2023, "Gen1");
+        lib1.addBook("Book2", "Author2", 4, 2024, "Gen2");
+        ArrayList<String> books = lib1.findRating(3);
+        assertTrue(books.isEmpty());
+    }
+
+    @Test
+    void findRatingOneBookTest() {
+        lib1.addBook("Book1", "Author1", 5, 2023, "Gen1");
+        lib1.addBook("Book2", "Author2", 4, 2024, "Gen2");
+        ArrayList<String> books = lib1.findRating(4);
+        assertEquals(1, books.size());
+        assertEquals("Book2", books.get(0));
+    }
+
+    @Test
+    void findRatingMultipleBooksTest() {
+        lib1.addBook("Book1", "Author1", 5, 2023, "Gen1");
+        lib1.addBook("Book2", "Author2", 4, 2024, "Gen2");
+        lib1.addBook("Book3", "Author1", 5, 2025, "Gen1");
+        ArrayList<String> books = lib1.findRating(5);
+        assertEquals(2, books.size());
+        assertEquals("Book1", books.get(0));
+        assertEquals("Book3", books.get(1));
+    }
+
+    @Test
+    void findDateReadNoneExistTest() {
+        lib1.addBook("Book1", "Author1", 5, 2023, "Gen1");
+        lib1.addBook("Book2", "Author2", 4, 2024, "Gen2");
+        ArrayList<String> books = lib1.findDate(2011);
+        assertTrue(books.isEmpty());
+    }
+
+    @Test
+    void findDateReadOneBookTest() {
+        lib1.addBook("Book1", "Author1", 5, 2023, "Gen1");
+        lib1.addBook("Book2", "Author2", 4, 2024, "Gen2");
+        ArrayList<String> books = lib1.findDate(2024);
+        assertEquals(1, books.size());
+        assertEquals("Book2", books.get(0));
+    }
+
+    @Test
+    void findDateReadMultipleBooksTest() {
+        lib1.addBook("Book1", "Author1", 5, 2023, "Gen1");
+        lib1.addBook("Book2", "Author2", 4, 2024, "Gen2");
+        lib1.addBook("Book3", "Author1", 5, 2023, "Gen1");
+        ArrayList<String> books = lib1.findDate(2023);
+        assertEquals(2, books.size());
+        assertEquals("Book1", books.get(0));
+        assertEquals("Book3", books.get(1));
+    }
 }
