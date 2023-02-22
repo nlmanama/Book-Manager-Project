@@ -38,7 +38,12 @@ public class Library {
     // EFFECTS: search through the list of books and find all books with the name
     public ArrayList findTitle(String title) {
         ArrayList<String> bookName = new ArrayList<>();
-        // stub
+        for (int i = 0; i < books.size(); i++) {
+            Book b = books.get(i);
+            if (b.getTitle().equals(title)) {
+                bookName.add(b.getTitle());
+            }
+        }
         return bookName;
     }
 
@@ -46,7 +51,12 @@ public class Library {
     // EFFECTS: search through the list of books and find all books in the genre
     public ArrayList findGenre(String genre) {
         ArrayList<String> bookName = new ArrayList<>();
-        // stub
+        for (int i = 0; i < books.size(); i++) {
+            Book b = books.get(i);
+            if (b.getGenre().equals(genre)) {
+                bookName.add(b.getTitle());
+            }
+        }
         return bookName;
     }
 
@@ -54,7 +64,12 @@ public class Library {
     // EFFECTS: search through the list of books and find all books with the same rating
     public ArrayList findRating(int rating) {
         ArrayList<String> bookName = new ArrayList<>();
-        // stub
+        for (int i = 0; i < books.size(); i++) {
+            Book b = books.get(i);
+            if (b.getRating() == rating) {
+                bookName.add(b.getTitle());
+            }
+        }
         return bookName;
     }
 
@@ -62,7 +77,12 @@ public class Library {
     // EFFECTS: search through the list of books and find all books read in the same year
     public ArrayList findDate(int date) {
         ArrayList<String> bookName = new ArrayList<>();
-        // stub
+        for (int i = 0; i < books.size(); i++) {
+            Book b = books.get(i);
+            if (b.getDateRead() == date) {
+                bookName.add(b.getTitle());
+            }
+        }
         return bookName;
     }
 
