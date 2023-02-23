@@ -72,7 +72,7 @@ public class LibraryApp {
         for (int i = 0; i < books.size(); i++) {
             String pos = Integer.toString(i + 1);
             Book b = books.get(i);
-            System.out.println(pos + " - " + b.getTitle() + " - Author: " +b.getAuthor() + " - Rating: "
+            System.out.println(pos + " - " + b.getTitle() + " - Author: " + b.getAuthor() + " - Rating: "
                     + b.getRating() + " - Genre: " + b.getGenre());
         }
     }
