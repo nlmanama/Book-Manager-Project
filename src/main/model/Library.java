@@ -20,6 +20,24 @@ public class Library {
         books.add(b);
     }
 
+    // REQUIRES: title be String
+    // MODIFIES: this
+    // EFFECTS: remove the book with the given title, if multiple books found, the latest added one is removed
+    public boolean deleteBook(String title) {
+        int index = -1;
+        for (int i = 0; i < books.size(); i++) {
+            if (books.get(i).getTitle().equals(title)) {
+                index = i;
+            }
+        }
+        if (index >= 0) {
+            books.remove(index);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     // REQUIRES: author must be a String
     // EFFECTS: search through the list of books and find all books with the given author name
     public ArrayList findAuthor(String author) {
