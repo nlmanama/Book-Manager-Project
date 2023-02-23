@@ -34,18 +34,6 @@ public class Library {
         return bookName;
     }
 
-    // REQUIRES: title must be a String
-    // EFFECTS: search through the list of books and find all books with the name
-    public ArrayList findTitle(String title) {
-        ArrayList<String> bookName = new ArrayList<>();
-        for (int i = 0; i < books.size(); i++) {
-            Book b = books.get(i);
-            if (b.getTitle().equals(title)) {
-                bookName.add(b.getTitle());
-            }
-        }
-        return bookName;
-    }
 
     // REQUIRES: genre must be a String
     // EFFECTS: search through the list of books and find all books in the genre

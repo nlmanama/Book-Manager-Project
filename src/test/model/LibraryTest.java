@@ -68,34 +68,6 @@ public class LibraryTest {
     }
 
     @Test
-    void findTitleNoneExistTest() {
-        lib1.addBook("Book1", "Author1", 5, 2023, "Gen1");
-        lib1.addBook("Book2", "Author2", 4, 2024, "Gen2");
-        ArrayList<String> books = lib1.findTitle("Book3");
-        assertTrue(books.isEmpty());
-    }
-
-    @Test
-    void findTitleOneBookTest() {
-        lib1.addBook("Book1", "Author1", 5, 2023, "Gen1");
-        lib1.addBook("Book2", "Author2", 4, 2024, "Gen2");
-        ArrayList<String> books = lib1.findTitle("Book2");
-        assertEquals(1, books.size());
-        assertEquals("Book2", books.get(0));
-    }
-
-    @Test
-    void findTitleMultipleBooksTest() {
-        lib1.addBook("Book1", "Author1", 5, 2023, "Gen1");
-        lib1.addBook("Book2", "Author2", 4, 2024, "Gen2");
-        lib1.addBook("Book1", "Author1", 5, 2025, "Gen1");
-        ArrayList<String> books = lib1.findTitle("Book1");
-        assertEquals(2, books.size());
-        assertEquals("Book1", books.get(0));
-        assertEquals("Book1", books.get(1));
-    }
-
-    @Test
     void findGenreNoneExistTest() {
         lib1.addBook("Book1", "Author1", 5, 2023, "Gen1");
         lib1.addBook("Book2", "Author2", 4, 2024, "Gen2");

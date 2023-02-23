@@ -2,6 +2,7 @@ package ui;
 
 import model.Library;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -28,7 +29,7 @@ public class LibraryApp {
                     addBook();
                     break;
                 case "2":
-                    searchAuthor();
+                    searchByAttribute();
                     break;
                 case "E":
                     System.out.println("Thank you!");
@@ -44,7 +45,7 @@ public class LibraryApp {
         Scanner scan = new Scanner(System.in);
         System.out.println("Please enter: ");
         System.out.println("1 - to add a book");
-        System.out.println("2 - to find a book by author name");
+        System.out.println("2 - to find a book by attribute");
         System.out.println("E - to end the session");
 
         String input = scan.nextLine();
@@ -83,19 +84,74 @@ public class LibraryApp {
         library.addBook(title, author,rating, date, genre);
     }
 
+    // EFFECTS: prompts user for which attribute to search for and calls appropriate methods
+    private void searchByAttribute() {
+        System.out.println("Please enter: ");
+        System.out.println("1 - To search by author name");
+        System.out.println("2 - To search by genre");
+        System.out.println("3 - To search by rating");
+        System.out.println("4 - To search by date read");
+        Scanner scan = new Scanner(System.in);
+        String input = scan.nextLine();
+        switch (input) {
+            case "1":
+                searchAuthor();
+                break;
+            case "2":
+                searchGenre();
+                break;
+            case "3":
+                searchRating();
+                break;
+            case"4":
+                searchDateRead();
+                break;
+        }
+    }
+
     // EFFECTS: accept user input for a name, search the library's list of books for books with said author's name
     private void searchAuthor() {
         Scanner scan = new Scanner(System.in);
-
         System.out.println("Name of author to search: ");
         String author = scan.nextLine();
-
         ArrayList booksFound = library.findAuthor(author);
+        handleSearchResults(booksFound);
+    }
 
+    // EFFECTS: accept user input for genre, search library's list of books for books of that genre
+    private void searchGenre() {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Genre to search: ");
+        String genre = scan.nextLine();
+        ArrayList booksFound = library.findGenre(genre);
+        handleSearchResults(booksFound);
+    }
+
+    // EFFECTS: accept user input for a rating, search library's list of books for books with that same rating
+    private void searchRating() {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Rating to search: ");
+        int rating = Integer.parseInt(scan.nextLine());
+        ArrayList booksFound = library.findRating(rating);
+        handleSearchResults(booksFound);
+    }
+
+    // EFFECTS: accept user input for a date, search library's list of books for books read at that date
+    private void searchDateRead() {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Date read to search: ");
+        int date = Integer.parseInt(scan.nextLine());
+        ArrayList booksFound = library.findDate(date);
+        handleSearchResults(booksFound);
+    }
+
+    // REQUIRES: booksFound be an ArrayList of Book
+    // EFFECTS: output message for no books found or the results if books were found in the search
+    private void handleSearchResults(ArrayList booksFound) {
         if (booksFound.size() == 0) {
-            System.out.println("Sorry, no books by that author in the library.");
+            System.out.println("Sorry, no books fit that attribute in the library.");
         } else {
-            System.out.println("The books by that author are: ");
+            System.out.println("The books found are: ");
             outputAL(booksFound);
         }
     }
