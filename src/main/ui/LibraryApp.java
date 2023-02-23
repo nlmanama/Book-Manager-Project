@@ -35,6 +35,9 @@ public class LibraryApp {
                 case "3":
                     viewAllBooks();
                     break;
+                case "4":
+                    deleteBook();
+                    break;
                 case "E":
                     System.out.println("Thank you!");
                     stop = true;
@@ -45,12 +48,13 @@ public class LibraryApp {
 
     // EFFECTS: prompts for, accept and return the appropriate user input
     private String getInput() {
-        acceptedInputs = new ArrayList<>(Arrays.asList("1", "2", "3", "E"));
+        acceptedInputs = new ArrayList<>(Arrays.asList("1", "2", "3", "4", "E"));
         Scanner scan = new Scanner(System.in);
         System.out.println("Please enter: ");
         System.out.println("1 - to add a book");
         System.out.println("2 - to find a book by attribute");
         System.out.println("3 - to view all books");
+        System.out.println("4 - to delete a book by title");
         System.out.println("E - to end the session");
 
         String input = scan.nextLine();
@@ -99,6 +103,21 @@ public class LibraryApp {
         String genre = scan.nextLine();
 
         library.addBook(title, author,rating, date, genre);
+    }
+
+    // MODIFIES: this
+    // EFFECTS: remove the book with the given title (if exists) in the library
+    private void deleteBook() {
+        System.out.println("Enter the title of the book to delete: ");
+        Scanner scan = new Scanner(System.in);
+        String title = scan.nextLine();
+        boolean delete = library.deleteBook(title);
+        if (delete) {
+            System.out.println(title + " is deleted from library");
+        } else {
+            System.out.println("No books found with that name");
+        }
+
     }
 
     // EFFECTS: prompts user for which attribute to search for and calls appropriate methods

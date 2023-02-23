@@ -22,7 +22,8 @@ public class Library {
 
     // REQUIRES: title be String
     // MODIFIES: this
-    // EFFECTS: remove the book with the given title, if multiple books found, the latest added one is removed
+    // EFFECTS: remove the book with the given title, if multiple books found, the latest added one is removed,
+    //          if none found, nothing is changed
     public boolean deleteBook(String title) {
         int index = -1;
         for (int i = 0; i < books.size(); i++) {

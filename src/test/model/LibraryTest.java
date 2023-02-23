@@ -150,4 +150,36 @@ public class LibraryTest {
         assertEquals("Book1", books.get(0));
         assertEquals("Book3", books.get(1));
     }
+
+    @Test
+    void deleteBookFoundTest() {
+        lib1.addBook("Book1", "Author1", 5, 2023, "Gen1");
+        boolean delete = lib1.deleteBook("Book1");
+        assertTrue(delete);
+        assertTrue(lib1.getBooks().isEmpty());
+    }
+
+    @Test
+    void deleteBookNoneFoundTest() {
+        lib1.addBook("Book1", "Author1", 5, 2023, "Gen1");
+        boolean delete = lib1.deleteBook("Book2");
+        assertFalse(delete);
+        assertEquals(1, lib1.getBooks().size());
+    }
+
+    @Test
+    void deleteBookDifferentIndex() {
+        lib1.addBook("Book1", "Author1", 5, 2023, "Gen1");
+        lib1.addBook("Book2", "Author2", 4, 2024, "Gen2");
+        lib1.addBook("Book3", "Author1", 5, 2023, "Gen1");
+        boolean delete = lib1.deleteBook("Book2");
+        assertTrue(delete);
+        assertEquals(2, lib1.getBooks().size());
+        ArrayList<Book> books = lib1.getBooks();
+        Book b1 = books.get(0);
+        Book b2 = books.get(1);
+        assertEquals("Book1", b1.getTitle());
+        assertEquals("Book3", b2.getTitle());
+
+    }
 }
