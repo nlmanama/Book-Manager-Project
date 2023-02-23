@@ -1,5 +1,6 @@
 package ui;
 
+import model.Book;
 import model.Library;
 
 import java.sql.SQLOutput;
@@ -31,6 +32,9 @@ public class LibraryApp {
                 case "2":
                     searchByAttribute();
                     break;
+                case "3":
+                    viewAllBooks();
+                    break;
                 case "E":
                     System.out.println("Thank you!");
                     stop = true;
@@ -41,11 +45,12 @@ public class LibraryApp {
 
     // EFFECTS: prompts for, accept and return the appropriate user input
     private String getInput() {
-        acceptedInputs = new ArrayList<>(Arrays.asList("1", "2", "E"));
+        acceptedInputs = new ArrayList<>(Arrays.asList("1", "2", "3", "E"));
         Scanner scan = new Scanner(System.in);
         System.out.println("Please enter: ");
         System.out.println("1 - to add a book");
         System.out.println("2 - to find a book by attribute");
+        System.out.println("3 - to view all books");
         System.out.println("E - to end the session");
 
         String input = scan.nextLine();
@@ -54,6 +59,18 @@ public class LibraryApp {
         }
 
         return input;
+    }
+
+
+    // EFFECTS: display all the books in the library including their attributes
+    private void viewAllBooks() {
+        ArrayList<Book> books = library.getBooks();
+        for (int i = 0; i < books.size(); i++) {
+            String pos = Integer.toString(i + 1);
+            Book b = books.get(i);
+            System.out.println(pos + " - " + b.getTitle() + " - Author: " +b.getAuthor() + " - Rating: "
+                    + b.getRating() + " - Genre: " + b.getGenre());
+        }
     }
 
     // MODIFIES: this
