@@ -54,6 +54,18 @@ public class Book {
         return tags;
     }
 
+    // REQUIRES: checkTags be an ArrayList of String
+    // EFFECTS: check if the tags list contains all the checkTags in the parameter, return true if yes, else false
+    public boolean containsTags(ArrayList<String> checkTags) {
+        boolean contain = true;
+        for (int i = 0; i < checkTags.size(); i++) {
+            if (!tags.contains(checkTags.get(i))) {
+                contain = false;
+            }
+        }
+        return contain;
+    }
+
 
 }
 

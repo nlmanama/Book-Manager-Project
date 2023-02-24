@@ -4,6 +4,8 @@ package model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class BookTest {
@@ -36,5 +38,37 @@ public class BookTest {
         assertEquals("Action", book1.getTags().get(0));
         assertEquals("YA", book1.getTags().get(1));
         assertEquals(2, book1.getTags().size());
+    }
+
+    @Test
+    void containsTagsDoesContainTest() {
+        book1.addTag("Action");
+        book1.addTag("YA");
+        ArrayList<String> checkTags = new ArrayList<>();
+        checkTags.add("YA");
+        checkTags.add("Action");
+        boolean contains = book1.containsTags(checkTags);
+        assertTrue(contains);
+    }
+
+    @Test
+    void containsTagsNotContainAny() {
+        book1.addTag("Action");
+        book1.addTag("YA");
+        ArrayList<String> checkTags = new ArrayList<>();
+        checkTags.add("Mystery");
+        boolean contains = book1.containsTags(checkTags);
+        assertFalse(contains);
+    }
+
+    @Test
+    void containsTagsContainOneButNotAll() {
+        book1.addTag("Action");
+        book1.addTag("YA");
+        ArrayList<String> checkTags = new ArrayList<>();
+        checkTags.add("YA");
+        checkTags.add("Mystery");
+        boolean contains = book1.containsTags(checkTags);
+        assertFalse(contains);
     }
 }
