@@ -210,11 +210,15 @@ public class LibraryApp {
     private void tagManagement() {
         System.out.println("Please enter: ");
         System.out.println("1 - to add a tag to a book");
+        System.out.println("2 - find books by tags");
         Scanner scan = new Scanner(System.in);
         String input = scan.nextLine();
         switch (input) {
             case "1":
                 addTagToBook();
+                break;
+            case "2":
+                findBooksByTag();
                 break;
         }
     }
@@ -232,6 +236,25 @@ public class LibraryApp {
             System.out.println("Tag " + tag + " added to " + title);
         } else {
             System.out.println("Sorry, no book with that title was found");
+        }
+    }
+
+    // EFFECTS: prompts and takes in input for tag to search by, search and display result
+    private void findBooksByTag() {
+        System.out.println("Enter how many tags to include: ");
+        Scanner scan = new Scanner(System.in);
+        int number = Integer.parseInt(scan.nextLine());
+        ArrayList<String> checkTags = new ArrayList<>();
+        for (int i = 1; i <= number; i++) {
+            System.out.println("Enter the " + i + " tag:");
+            checkTags.add(scan.nextLine());
+        }
+        ArrayList<String> bookName = library.searchByTags(checkTags);
+        if (bookName.size() == 0) {
+            System.out.println("No books with those tags in library");
+        } else {
+            System.out.println("Books with those tags are:");
+            outputAL(bookName);
         }
     }
 }
