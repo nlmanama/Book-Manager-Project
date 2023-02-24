@@ -13,15 +13,15 @@ public class LibraryApp {
     private Library library;
     private ArrayList<String> acceptedInputs;
 
-    // EFFECTS: run the library
+    // MODIFIES: this
+    // EFFECTS: create and run the library
     public LibraryApp() {
+        library = new Library();
         runLibrary();
     }
 
-    // MODIFIES: this
-    // EFFECTS: execute each function of the application depending on user input
+    // EFFECTS: execute each method of the application depending on user input
     private void runLibrary() {
-        library = new Library();
         boolean stop = false;
         while (!stop) {
             String input = getInput();
@@ -38,23 +38,25 @@ public class LibraryApp {
                 case "4":
                     deleteBook();
                     break;
-                case "E":
-                    System.out.println("Thank you!");
-                    stop = true;
+                case "5":
+                    tagManagement();
                     break;
+                case "E":
+                    stop = true;
             }
         }
     }
 
     // EFFECTS: prompts for, accept and return the appropriate user input
     private String getInput() {
-        acceptedInputs = new ArrayList<>(Arrays.asList("1", "2", "3", "4", "E"));
+        acceptedInputs = new ArrayList<>(Arrays.asList("1", "2", "3", "4", "5", "E"));
         Scanner scan = new Scanner(System.in);
         System.out.println("Please enter: ");
         System.out.println("1 - to add a book");
         System.out.println("2 - to find a book by attribute");
         System.out.println("3 - to view all books");
         System.out.println("4 - to delete a book by title");
+        System.out.println("5 - to use tags management");
         System.out.println("E - to end the session");
 
         String input = scan.nextLine();
@@ -200,6 +202,36 @@ public class LibraryApp {
     private void outputAL(ArrayList al) {
         for (int i = 0; i < al.size(); i++) {
             System.out.println(al.get(i));
+        }
+    }
+
+    // EFFECTS: prompts and takes in input for which tag management function the user wants to use, calls appropriate
+    // method
+    private void tagManagement() {
+        System.out.println("Please enter: ");
+        System.out.println("1 - to add a tag to a book");
+        Scanner scan = new Scanner(System.in);
+        String input = scan.nextLine();
+        switch (input) {
+            case "1":
+                addTagToBook();
+                break;
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: add a tag that the user inputs to their book of choice
+    private void addTagToBook() {
+        System.out.println("Enter the title of the book to add a tag:");
+        Scanner scan = new Scanner(System.in);
+        String title = scan.nextLine();
+        System.out.println("Enter a tag to add to the book:");
+        String tag = scan.nextLine();
+        boolean success = library.addTagToBook(title, tag);
+        if (success) {
+            System.out.println("Tag " + tag + " added to " + title);
+        } else {
+            System.out.println("Sorry, no book with that title was found");
         }
     }
 }
