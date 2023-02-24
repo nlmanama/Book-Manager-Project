@@ -99,7 +99,7 @@ public class Library {
 
     // REQUIRES: both title and tag be String
     // MODIFIES: this
-    // EFFECTS: add a tag to the book with the title given, return true if sucessful, false if no books found with
+    // EFFECTS: add a tag to the book with the title given, return true if successful, false if no books found with
     // that title. If multiple books have the same title, tag is added to all.
     public boolean addTagToBook(String title, String tag) {
         boolean added = false;
@@ -111,4 +111,19 @@ public class Library {
         }
         return added;
     }
+
+    // REQUIRES: tags to be an ArrayList of String
+    // EFFECTS: search through library for all books that contain all tags asked for, return the books' name
+    public ArrayList searchByTags(ArrayList<String> tags) {
+        ArrayList<String> bookName = new ArrayList<>();
+        for (int i = 0; i < books.size(); i++) {
+            if (books.get(i).containsTags(tags)) {
+                bookName.add(books.get(i).getTitle());
+            }
+        }
+        return bookName;
+    }
+
+
+
 }

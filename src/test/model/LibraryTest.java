@@ -193,12 +193,62 @@ public class LibraryTest {
     }
 
     @Test
-    void addTagToBookFailTest() {
+    void searchByTagsNoneExistTest() {
         lib1.addBook("Book1", "Author1", 5, 2023, "Gen1");
-        boolean success = lib1.addTagToBook("Book2", "Favourite");
-        assertFalse(success);
-        ArrayList<Book> books = lib1.getBooks();
-        Book b = books.get(0);
-        assertEquals(0, b.getTags().size());
+        lib1.addTagToBook("Book1", "Favourite");
+        lib1.addBook("Book2", "Author2", 4, 2024, "Gen2");
+        lib1.addTagToBook("Book2", "Novella");
+        ArrayList<String> checkTags = new ArrayList<>();
+        checkTags.add("Hardcover");
+        ArrayList<String> books = lib1.searchByTags(checkTags);
+        assertTrue(books.isEmpty());
+    }
+
+    @Test
+    void searchByTagsOneExistTest() {
+        lib1.addBook("Book1", "Author1", 5, 2023, "Gen1");
+        lib1.addTagToBook("Book1", "Favourite");
+        lib1.addTagToBook("Book1", "Hardcover");
+        lib1.addBook("Book2", "Author2", 4, 2024, "Gen2");
+        lib1.addTagToBook("Book2", "Novella");
+        ArrayList<String> checkTags = new ArrayList<>();
+        checkTags.add("Hardcover");
+        ArrayList<String> books = lib1.searchByTags(checkTags);
+        assertEquals(1, books.size());
+        assertEquals("Book1", books.get(0));
+    }
+
+    @Test
+    void searchByTagsMultipleBooksTest() {
+        lib1.addBook("Book1", "Author1", 5, 2023, "Gen1");
+        lib1.addTagToBook("Book1", "Favourite");
+        lib1.addBook("Book2", "Author2", 4, 2024, "Gen2");
+        lib1.addTagToBook("Book2", "Favourite");
+        lib1.addTagToBook("Book2", "Novella");
+        ArrayList<String> checkTags = new ArrayList<>();
+        checkTags.add("Favourite");
+        ArrayList<String> books = lib1.searchByTags(checkTags);
+        assertEquals(2, books.size());
+        assertEquals("Book1", books.get(0));
+        assertEquals("Book2", books.get(1));
+    }
+
+    @Test
+    void searchByTagsMultipleTagsTest() {
+        lib1.addBook("BookA", "Author1", 5, 2023, "Gen1");
+        lib1.addTagToBook("BookA", "Favourite");
+        lib1.addTagToBook("BookA", "Novella");
+        lib1.addBook("BookB", "Author2", 4, 2024, "Gen2");
+        lib1.addTagToBook("BookB", "Favourite");
+        lib1.addTagToBook("BookB", "Novella");
+        ArrayList<String> checkTags = new ArrayList<>();
+        checkTags.add("Novella");
+        checkTags.add("Favourite");
+        ArrayList<String> books = lib1.searchByTags(checkTags);
+        assertEquals(2, books.size());
+        assertEquals("BookA", books.get(0));
+        assertEquals("BookB", books.get(1));
     }
 }
+
+
