@@ -180,6 +180,25 @@ public class LibraryTest {
         Book b2 = books.get(1);
         assertEquals("Book1", b1.getTitle());
         assertEquals("Book3", b2.getTitle());
+    }
 
+    @Test
+    void addTagToBookSuccessTest() {
+        lib1.addBook("Book1", "Author1", 5, 2023, "Gen1");
+        boolean success = lib1.addTagToBook("Book1", "Favourite");
+        assertTrue(success);
+        ArrayList<Book> books = lib1.getBooks();
+        Book b = books.get(0);
+        assertEquals(1, b.getTags().size());
+    }
+
+    @Test
+    void addTagToBookFailTest() {
+        lib1.addBook("Book1", "Author1", 5, 2023, "Gen1");
+        boolean success = lib1.addTagToBook("Book2", "Favourite");
+        assertFalse(success);
+        ArrayList<Book> books = lib1.getBooks();
+        Book b = books.get(0);
+        assertEquals(0, b.getTags().size());
     }
 }

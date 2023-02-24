@@ -96,4 +96,19 @@ public class Library {
     public ArrayList getBooks() {
         return books;
     }
+
+    // REQUIRES: both title and tag be String
+    // MODIFIES: this
+    // EFFECTS: add a tag to the book with the title given, return true if sucessful, false if no books found with
+    // that title. If multiple books have the same title, tag is added to all.
+    public boolean addTagToBook(String title, String tag) {
+        boolean added = false;
+        for (int i = 0; i < books.size(); i++) {
+            if (books.get(i).getTitle().equals(title)) {
+                books.get(i).addTag(tag);
+                added = true;
+            }
+        }
+        return added;
+    }
 }
