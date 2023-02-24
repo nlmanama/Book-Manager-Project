@@ -59,6 +59,7 @@ public class LibraryApp {
 
         String input = scan.nextLine();
         while (!acceptedInputs.contains(input)) {
+            System.out.println("Please only enter one of the given options:");
             input = scan.nextLine();
         }
 
@@ -69,6 +70,9 @@ public class LibraryApp {
     // EFFECTS: display all the books in the library including their attributes
     private void viewAllBooks() {
         ArrayList<Book> books = library.getBooks();
+        if (books.size() == 0) {
+            System.out.println("No books in library");
+        }
         for (int i = 0; i < books.size(); i++) {
             String pos = Integer.toString(i + 1);
             Book b = books.get(i);
