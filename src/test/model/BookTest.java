@@ -21,7 +21,7 @@ public class BookTest {
         assertEquals("Book", book1.getTitle());
         assertEquals("Author", book1.getAuthor());
         assertEquals(5, book1.getRating());
-        assertEquals(2023, book1.getDateRead());
+        assertEquals(2023, book1.getYearRead());
         assertTrue(book1.getTags().isEmpty());
     }
 

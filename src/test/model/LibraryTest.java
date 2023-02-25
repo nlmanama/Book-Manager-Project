@@ -124,28 +124,28 @@ public class LibraryTest {
     }
 
     @Test
-    void findDateReadNoneExistTest() {
+    void findYearReadNoneExistTest() {
         lib1.addBook("Book1", "Author1", 5, 2023, "Gen1");
         lib1.addBook("Book2", "Author2", 4, 2024, "Gen2");
-        ArrayList<String> books = lib1.findDate(2011);
+        ArrayList<String> books = lib1.findYear(2011);
         assertTrue(books.isEmpty());
     }
 
     @Test
-    void findDateReadOneBookTest() {
+    void findYearReadOneBookTest() {
         lib1.addBook("Book1", "Author1", 5, 2023, "Gen1");
         lib1.addBook("Book2", "Author2", 4, 2024, "Gen2");
-        ArrayList<String> books = lib1.findDate(2024);
+        ArrayList<String> books = lib1.findYear(2024);
         assertEquals(1, books.size());
         assertEquals("Book2", books.get(0));
     }
 
     @Test
-    void findDateReadMultipleBooksTest() {
+    void findYearReadMultipleBooksTest() {
         lib1.addBook("Book1", "Author1", 5, 2023, "Gen1");
         lib1.addBook("Book2", "Author2", 4, 2024, "Gen2");
         lib1.addBook("Book3", "Author1", 5, 2023, "Gen1");
-        ArrayList<String> books = lib1.findDate(2023);
+        ArrayList<String> books = lib1.findYear(2023);
         assertEquals(2, books.size());
         assertEquals("Book1", books.get(0));
         assertEquals("Book3", books.get(1));

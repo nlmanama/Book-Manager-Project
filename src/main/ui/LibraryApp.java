@@ -3,7 +3,6 @@ package ui;
 import model.Book;
 import model.Library;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -102,13 +101,13 @@ public class LibraryApp {
             System.out.println("Please only enter an integer.");
         }
 
-        System.out.println("Date read:");
-        int date = Integer.parseInt(scan.nextLine());
+        System.out.println("Year read:");
+        int year = Integer.parseInt(scan.nextLine());
 
         System.out.println("Genre: ");
         String genre = scan.nextLine();
 
-        library.addBook(title, author,rating, date, genre);
+        library.addBook(title, author,rating, year, genre);
     }
 
     // MODIFIES: this
@@ -132,7 +131,7 @@ public class LibraryApp {
         System.out.println("1 - To search by author name");
         System.out.println("2 - To search by genre");
         System.out.println("3 - To search by rating");
-        System.out.println("4 - To search by date read");
+        System.out.println("4 - To search by year read");
         Scanner scan = new Scanner(System.in);
         String input = scan.nextLine();
         switch (input) {
@@ -146,7 +145,7 @@ public class LibraryApp {
                 searchRating();
                 break;
             case"4":
-                searchDateRead();
+                searchYearRead();
                 break;
         }
     }
@@ -179,11 +178,11 @@ public class LibraryApp {
     }
 
     // EFFECTS: accept user input for a date, search library's list of books for books read at that date
-    private void searchDateRead() {
+    private void searchYearRead() {
         Scanner scan = new Scanner(System.in);
-        System.out.println("Date read to search: ");
-        int date = Integer.parseInt(scan.nextLine());
-        ArrayList booksFound = library.findDate(date);
+        System.out.println("Year read to search: ");
+        int year = Integer.parseInt(scan.nextLine());
+        ArrayList booksFound = library.findYear(year);
         handleSearchResults(booksFound);
     }
 

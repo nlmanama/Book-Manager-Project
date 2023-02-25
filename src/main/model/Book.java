@@ -2,23 +2,23 @@ package model;
 
 import java.util.ArrayList;
 
-// Represents a book with a title, author, rating, date read, genre, and, customs tags
+// Represents a book with a title, author, rating, year read, genre, and, customs tags
 public class Book {
     private String title;
     private String author;
     private int rating;
-    private int dateRead;
+    private int yearRead;
     private String genre;
     private ArrayList<String> tags;
 
-    // REQUIRES: title, author, genre are String, date and rating are int
-    // EFFECTS: create a book with a title, author, genre, date read and rating,
+    // REQUIRES: title, author, genre are String, year and rating are int
+    // EFFECTS: create a book with a title, author, genre, year read and rating,
     //          with an empty tags list
-    public Book(String ti, String au, int rat, int date, String gen) {
+    public Book(String ti, String au, int rat, int year, String gen) {
         this.title = ti;
         this.author = au;
         this.rating = rat;
-        this.dateRead = date;
+        this.yearRead = year;
         this.genre = gen;
         this.tags = new ArrayList<>();
     }
@@ -42,8 +42,8 @@ public class Book {
         return rating;
     }
 
-    public int getDateRead() {
-        return dateRead;
+    public int getYearRead() {
+        return yearRead;
     }
 
     public String getGenre() {

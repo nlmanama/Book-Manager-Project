@@ -12,11 +12,11 @@ public class Library {
         books = new ArrayList<>();
     }
 
-    // REQUIRES: title, author, genre are String, date and rating are int
+    // REQUIRES: title, author, genre are String, year and rating are int
     // MODIFIES: this
     // EFFECTS: create a book with given parameters and add it to the list of books
-    public void addBook(String ti, String au, int rat, int date, String gen) {
-        Book b = new Book(ti, au, rat, date, gen);
+    public void addBook(String ti, String au, int rat, int year, String gen) {
+        Book b = new Book(ti, au, rat, year, gen);
         books.add(b);
     }
 
@@ -80,13 +80,13 @@ public class Library {
         return bookName;
     }
 
-    // REQUIRES: date be an integer
+    // REQUIRES: year be an integer
     // EFFECTS: search through the list of books and find all books read in the same year
-    public ArrayList findDate(int date) {
+    public ArrayList findYear(int year) {
         ArrayList<String> bookName = new ArrayList<>();
         for (int i = 0; i < books.size(); i++) {
             Book b = books.get(i);
-            if (b.getDateRead() == date) {
+            if (b.getYearRead() == year) {
                 bookName.add(b.getTitle());
             }
         }
