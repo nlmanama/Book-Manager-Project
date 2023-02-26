@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
+// A library management application
 public class LibraryApp {
 
     private Library library;
@@ -78,7 +79,7 @@ public class LibraryApp {
             String pos = Integer.toString(i + 1);
             Book b = books.get(i);
             System.out.println(pos + " - " + b.getTitle() + " - Author: " + b.getAuthor() + " - Rating: "
-                    + b.getRating() + " - Genre: " + b.getGenre());
+                    + b.getRating() + " - Genre: " + b.getGenre() + " - Year Read: " + b.getYearRead());
         }
     }
 
@@ -186,7 +187,7 @@ public class LibraryApp {
         handleSearchResults(booksFound);
     }
 
-    // REQUIRES: booksFound be an ArrayList of Book
+    // REQUIRES: booksFound be an ArrayList of String
     // EFFECTS: output message for no books found or the results if books were found in the search
     private void handleSearchResults(ArrayList booksFound) {
         if (booksFound.size() == 0) {
@@ -205,7 +206,7 @@ public class LibraryApp {
     }
 
     // EFFECTS: prompts and takes in input for which tag management function the user wants to use, calls appropriate
-    // method
+    //          method
     private void tagManagement() {
         System.out.println("Please enter: ");
         System.out.println("1 - to add a tag to a book");

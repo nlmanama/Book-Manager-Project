@@ -11,7 +11,7 @@ public class Book {
     private String genre;
     private ArrayList<String> tags;
 
-    // REQUIRES: title, author, genre are String, year and rating are int
+    // REQUIRES: title, author, and genre are String, year and rating are int
     // EFFECTS: create a book with a title, author, genre, year read and rating,
     //          with an empty tags list
     public Book(String ti, String au, int rat, int year, String gen) {
