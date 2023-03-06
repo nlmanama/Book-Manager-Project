@@ -40,13 +40,13 @@ public class LibraryApp {
                 searchByAttribute();
                 break;
             case "3":
-                viewAllBooks();
+                tagManagement();
                 break;
             case "4":
-                deleteBook();
+                viewOrDelete();
                 break;
             case "5":
-                tagManagement();
+                System.out.println("save and stuff");
                 break;
             case "E":
                 return true;
@@ -61,9 +61,8 @@ public class LibraryApp {
         System.out.println("Please enter: ");
         System.out.println("1 - to add a book");
         System.out.println("2 - to find a book by attribute");
-        System.out.println("3 - to view all books");
-        System.out.println("4 - to delete a book by title");
-        System.out.println("5 - to use tags management");
+        System.out.println("3 - to use tags management");
+        System.out.println("4 - to view or delete books");
         System.out.println("E - to end the session");
 
         String input = scan.nextLine();
@@ -75,20 +74,6 @@ public class LibraryApp {
         return input;
     }
 
-
-    // EFFECTS: display all the books in the library including their attributes
-    private void viewAllBooks() {
-        ArrayList<Book> books = library.getBooks();
-        if (books.size() == 0) {
-            System.out.println("No books in library");
-        }
-        for (int i = 0; i < books.size(); i++) {
-            String pos = Integer.toString(i + 1);
-            Book b = books.get(i);
-            System.out.println(pos + " - " + b.getTitle() + " - Author: " + b.getAuthor() + " - Rating: "
-                    + b.getRating() + " - Genre: " + b.getGenre() + " - Year Read: " + b.getYearRead());
-        }
-    }
 
     // MODIFIES: this
     // EFFECTS: asks for user input for details needed to create Book object,
@@ -118,6 +103,22 @@ public class LibraryApp {
         library.addBook(title, author,rating, year, genre);
     }
 
+    private void viewOrDelete() {
+        System.out.println("Please enter:");
+        System.out.println("1 - To view all books");
+        System.out.println("2 - To delete a book by title");
+        Scanner scan = new Scanner(System.in);
+        String input = scan.nextLine();
+        switch (input) {
+            case "1":
+                viewAllBooks();
+                break;
+            case "2":
+                deleteBook();
+                break;
+        }
+    }
+
     // MODIFIES: this
     // EFFECTS: remove the book with the given title (if exists) in the library
     private void deleteBook() {
@@ -131,6 +132,20 @@ public class LibraryApp {
             System.out.println("No books found with that name");
         }
 
+    }
+
+    // EFFECTS: display all the books in the library including their attributes
+    private void viewAllBooks() {
+        ArrayList<Book> books = library.getBooks();
+        if (books.size() == 0) {
+            System.out.println("No books in library");
+        }
+        for (int i = 0; i < books.size(); i++) {
+            String pos = Integer.toString(i + 1);
+            Book b = books.get(i);
+            System.out.println(pos + " - " + b.getTitle() + " - Author: " + b.getAuthor() + " - Rating: "
+                    + b.getRating() + " - Genre: " + b.getGenre() + " - Year Read: " + b.getYearRead());
+        }
     }
 
     // EFFECTS: prompts user for which attribute to search for and calls appropriate methods
