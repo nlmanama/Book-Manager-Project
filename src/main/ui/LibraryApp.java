@@ -25,26 +25,33 @@ public class LibraryApp {
         boolean stop = false;
         while (!stop) {
             String input = getInput();
-            switch (input) {
-                case "1":
-                    addBook();
-                    break;
-                case "2":
-                    searchByAttribute();
-                    break;
-                case "3":
-                    viewAllBooks();
-                    break;
-                case "4":
-                    deleteBook();
-                    break;
-                case "5":
-                    tagManagement();
-                    break;
-                case "E":
-                    stop = true;
-            }
+            stop = handleInput(input);
         }
+    }
+
+    // REQUIRES: input be a String
+    // EFFECTS: calls the corresponding method according to input
+    private boolean handleInput(String input) {
+        switch (input) {
+            case "1":
+                addBook();
+                break;
+            case "2":
+                searchByAttribute();
+                break;
+            case "3":
+                viewAllBooks();
+                break;
+            case "4":
+                deleteBook();
+                break;
+            case "5":
+                tagManagement();
+                break;
+            case "E":
+                return true;
+        }
+        return false;
     }
 
     // EFFECTS: prompts for, accept and return the appropriate user input
