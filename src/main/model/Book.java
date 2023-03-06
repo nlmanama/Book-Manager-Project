@@ -1,5 +1,7 @@
 package model;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 // Represents a book with a title, author, rating, year read, genre, and, customs tags
@@ -66,6 +68,17 @@ public class Book {
         return contain;
     }
 
+    // EFFECTS: convert the book to a JSONObject
+    public JSONObject toJson() {
+        JSONObject bookJson = new JSONObject();
+        bookJson.put("title", title);
+        bookJson.put("author", author);
+        bookJson.put("rating", rating);
+        bookJson.put("yearRead", yearRead);
+        bookJson.put("genre", genre);
+        bookJson.put("tags", tags);
+        return bookJson;
+    }
 
 }
 
