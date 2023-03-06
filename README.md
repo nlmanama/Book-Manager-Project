@@ -31,3 +31,5 @@ storing and sorting of books in an easy way would be the ideal project to create
 - As a user, I want to be able to remove a book from my library
 - As a user, I want to be able to search for books by their attributes
 - As a user, I want to be able to search books by filtering my library with which tags I want to include 
+- As a user, I want to have the option to save my library to a file
+- As a user, I want to have the option to load my library from a file
