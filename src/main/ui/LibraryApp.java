@@ -2,7 +2,9 @@ package ui;
 
 import model.Book;
 import model.Library;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -10,13 +12,16 @@ import java.util.Scanner;
 // A library management application
 public class LibraryApp {
 
+    private static final String JSON_STORE = "./data/library.json";
     private Library library;
     private ArrayList<String> acceptedInputs;
+    private JsonWriter jsonWriter;
 
     // MODIFIES: this
     // EFFECTS: create and run the library
-    public LibraryApp() {
+    public LibraryApp() throws FileNotFoundException {
         library = new Library();
+        jsonWriter = new JsonWriter(JSON_STORE);
         runLibrary();
     }
 
@@ -46,7 +51,7 @@ public class LibraryApp {
                 viewOrDelete();
                 break;
             case "5":
-                System.out.println("save and stuff");
+                saveLibrary();
                 break;
             case "E":
                 return true;
@@ -63,6 +68,7 @@ public class LibraryApp {
         System.out.println("2 - to find a book by attribute");
         System.out.println("3 - to use tags management");
         System.out.println("4 - to view or delete books");
+        System.out.println("5 - to save library to file");
         System.out.println("E - to end the session");
 
         String input = scan.nextLine();
@@ -277,6 +283,18 @@ public class LibraryApp {
         } else {
             System.out.println("Books with those tags are:");
             outputAL(bookName);
+        }
+    }
+
+    // EFFECTS: saves the library to file
+    private void saveLibrary() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(library);
+            jsonWriter.close();
+            System.out.println("Saved library to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
         }
     }
 }

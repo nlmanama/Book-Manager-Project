@@ -8,6 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
 public class JsonWriter {
+    private static final int TAB = 4;
     private PrintWriter writer;
     private String destination;
 
@@ -26,7 +27,7 @@ public class JsonWriter {
     // EFFECTS: writes JSON representation of library to file
     public void write(Library lib) {
         JSONObject json = lib.toJson();
-        writeToFile(json.toString());
+        writeToFile(json.toString(TAB));
     }
 
     // MODIFIES: this
