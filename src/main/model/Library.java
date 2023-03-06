@@ -1,5 +1,8 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 // A library that contains a list of books
@@ -124,6 +127,14 @@ public class Library {
         return bookName;
     }
 
-
+    public JSONObject toJson() {
+        JSONObject libJson = new JSONObject();
+        JSONArray arrayOfBooks = new JSONArray();
+        for (Book b: books) {
+            arrayOfBooks.put(b.toJson());
+        }
+        libJson.put("books", arrayOfBooks);
+        return libJson;
+    }
 
 }
