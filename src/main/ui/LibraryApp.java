@@ -2,9 +2,11 @@ package ui;
 
 import model.Book;
 import model.Library;
+import persistence.JsonReader;
 import persistence.JsonWriter;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -16,12 +18,14 @@ public class LibraryApp {
     private Library library;
     private ArrayList<String> acceptedInputs;
     private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
     // MODIFIES: this
     // EFFECTS: create and run the library
     public LibraryApp() throws FileNotFoundException {
         library = new Library();
         jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
         runLibrary();
     }
 
@@ -51,7 +55,7 @@ public class LibraryApp {
                 viewOrDelete();
                 break;
             case "5":
-                saveLibrary();
+                saveOrLoad();
                 break;
             case "E":
                 return true;
@@ -68,7 +72,7 @@ public class LibraryApp {
         System.out.println("2 - to find a book by attribute");
         System.out.println("3 - to use tags management");
         System.out.println("4 - to view or delete books");
-        System.out.println("5 - to save library to file");
+        System.out.println("5 - to save or load library");
         System.out.println("E - to end the session");
 
         String input = scan.nextLine();
@@ -109,6 +113,7 @@ public class LibraryApp {
         library.addBook(title, author,rating, year, genre);
     }
 
+    // EFFECTS: takes input for which function to execute, calls corresponding method
     private void viewOrDelete() {
         System.out.println("Please enter:");
         System.out.println("1 - To view all books");
@@ -286,6 +291,24 @@ public class LibraryApp {
         }
     }
 
+    // EFFECTS: prompts user for which function to execute, calls corresponding method
+    private void saveOrLoad() {
+        System.out.println("Please enter:");
+        System.out.println("S - to the library to file");
+        System.out.println("L - to load a library from file");
+        Scanner scan = new Scanner(System.in);
+        String input = scan.nextLine();
+
+        switch (input) {
+            case "S":
+                saveLibrary();
+                break;
+            case "L":
+                loadLibrary();
+                break;
+        }
+    }
+
     // EFFECTS: saves the library to file
     private void saveLibrary() {
         try {
@@ -295,6 +318,17 @@ public class LibraryApp {
             System.out.println("Saved library to " + JSON_STORE);
         } catch (FileNotFoundException e) {
             System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads library from file
+    private void loadLibrary() {
+        try {
+            library = jsonReader.read();
+            System.out.println("Loaded library from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
         }
     }
 }
