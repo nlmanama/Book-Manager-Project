@@ -23,6 +23,13 @@ public class Library {
         books.add(b);
     }
 
+    // REQUIRES: b is a Book object
+    // MODIFIES: this
+    // EFFECTS: add book to library
+    public void addBook(Book b) {
+        books.add(b);
+    }
+
     // REQUIRES: title be String
     // MODIFIES: this
     // EFFECTS: remove the book with the given title, if multiple books found, the latest added one is removed,
@@ -127,6 +134,7 @@ public class Library {
         return bookName;
     }
 
+    // EFFECTS: creates a JSON object of this library
     public JSONObject toJson() {
         JSONObject libJson = new JSONObject();
         JSONArray arrayOfBooks = new JSONArray();
