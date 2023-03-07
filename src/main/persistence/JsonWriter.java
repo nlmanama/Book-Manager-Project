@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
+// Represents a writer that writes library to file in JSON data
 public class JsonWriter {
     private static final int TAB = 4;
     private PrintWriter writer;
