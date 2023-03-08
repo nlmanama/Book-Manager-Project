@@ -1,0 +1,49 @@
+{"books": [
+    {
+        "yearRead": 2019,
+        "author": "Rick Riordan",
+        "rating": 5,
+        "genre": "YA",
+        "title": "Percy Jackson: The Lighting Thief",
+        "tags": [
+            "Favourite",
+            "PJO",
+            "Book 1"
+        ]
+    },
+    {
+        "yearRead": 2017,
+        "author": "Rick Riordan",
+        "rating": 5,
+        "genre": "YA",
+        "title": "Percy Jackson: The Sea of Monsters",
+        "tags": [
+            "PJO",
+            "Favourite"
+        ]
+    },
+    {
+        "yearRead": 2019,
+        "author": "J K Rowling",
+        "rating": 4,
+        "genre": "YA",
+        "title": "Harry Potter and the Philosopher's Stone",
+        "tags": []
+    },
+    {
+        "yearRead": 2021,
+        "author": "Marget Atwood",
+        "rating": 5,
+        "genre": "Dystopian",
+        "title": "The Handmaid's Tale",
+        "tags": ["School"]
+    },
+    {
+        "yearRead": 2021,
+        "author": "George Orwell",
+        "rating": 4,
+        "genre": "Dystopian",
+        "title": "1984",
+        "tags": []
+    }
+]}

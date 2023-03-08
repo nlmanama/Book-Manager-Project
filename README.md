@@ -33,3 +33,7 @@ storing and sorting of books in an easy way would be the ideal project to create
 - As a user, I want to be able to search books by filtering my library with which tags I want to include 
 - As a user, I want to have the option to save my library to a file
 - As a user, I want to have the option to load my library from a file
+
+#### Credit
+Classes, methods, and tests relating to data persistence, specifically working with the JSON library is based off of 
+the example JsonSerializationDemo project.
