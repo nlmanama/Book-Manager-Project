@@ -1,0 +1,21 @@
+{"books": [
+  {
+    "yearRead": 2017,
+    "author": "Rick Riordan",
+    "rating": 5,
+    "genre": "YA",
+    "title": "Percy Jackson: The Lighting Thief",
+    "tags": [
+      "Favourite",
+      "PJO"
+    ]
+  },
+  {
+    "yearRead": 2019,
+    "author": "J K Rowling",
+    "rating": 4,
+    "genre": "YA",
+    "title": "Harry Potter and the Philosopher's Stone",
+    "tags": []
+  }
+]}
