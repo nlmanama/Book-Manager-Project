@@ -28,12 +28,12 @@ public class JsonWriterTest extends JsonTest {
     void writerEmptyLibraryTest() {
         try {
             Library l = new Library();
-            JsonWriter writer = new JsonWriter ("./data/testWriterEmptyLibrary");
+            JsonWriter writer = new JsonWriter ("./data/testWriterEmptyLibrary.json");
             writer.open();
             writer.write(l);
             writer.close();
 
-            JsonReader reader = new JsonReader("./data/testWriterEmptyLibrary");
+            JsonReader reader = new JsonReader("./data/testWriterEmptyLibrary.json");
             Library readLibrary = reader.read();
             assertEquals(0, readLibrary.getBooks().size());
         } catch (IOException e) {
@@ -49,12 +49,12 @@ public class JsonWriterTest extends JsonTest {
             l.addTagToBook("PJO", "Favourite");
             l.addBook("HP", "JKR", 4, 2014, "YA");
 
-            JsonWriter writer = new JsonWriter("./data/testWriterGeneralLibrary");
+            JsonWriter writer = new JsonWriter("./data/testWriterGeneralLibrary.json");
             writer.open();
             writer.write(l);
             writer.close();
 
-            JsonReader reader = new JsonReader("./data/testWriterGeneralLibrary");
+            JsonReader reader = new JsonReader("./data/testWriterGeneralLibrary.json");
             Library readLibrary = reader.read();
             ArrayList<Book> books = readLibrary.getBooks();
             assertEquals(2, books.size());
