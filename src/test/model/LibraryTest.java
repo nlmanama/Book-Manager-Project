@@ -1,5 +1,7 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -38,6 +40,29 @@ public class LibraryTest {
         assertEquals("Book2", books.get(1).getTitle());
         assertEquals("Gen2", books.get(1).getGenre());
     }
+
+    @Test
+    void differentAddBookTest() {
+        Book b = new Book ("Book1", "Author1", 5, 2023, "Gen1");
+        lib1.addBook(b);
+        ArrayList<Book> books = lib1.getBooks();
+        assertEquals(1, books.size());
+        assertEquals("Book1", books.get(0).getTitle());
+    }
+
+    @Test
+    void differentAddMultipleBooksTest() {
+        Book b1 = new Book("Book1", "Author1", 5, 2023, "Gen1");
+        Book b2 = new Book("Book2", "Author2", 4, 2024, "Gen2");
+        lib1.addBook(b1);
+        lib1.addBook(b2);
+        ArrayList<Book> books = lib1.getBooks();
+        assertEquals(2, books.size());
+        assertEquals("Book1", books.get(0).getTitle());
+        assertEquals("Book2", books.get(1).getTitle());
+        assertEquals("Gen2", books.get(1).getGenre());
+    }
+
 
     @Test
     void findAuthorNoneExistTest() {
@@ -248,6 +273,19 @@ public class LibraryTest {
         assertEquals(2, books.size());
         assertEquals("BookA", books.get(0));
         assertEquals("BookB", books.get(1));
+    }
+
+    @Test
+    void toJsonTest() {
+        lib1.addBook("BookA", "Author1", 5, 2023, "Gen1");
+        lib1.addBook("BookB", "Author2", 4, 2024, "Gen2");
+        JSONObject libObject = lib1.toJson();
+        JSONArray bookAr = libObject.getJSONArray("books");
+        JSONObject b1 = (JSONObject) bookAr.get(0);
+        JSONObject b2 = (JSONObject) bookAr.get(1);
+        assertEquals(2, bookAr.length());
+        assertEquals("BookA", b1.getString("title"));
+        assertEquals("BookB", b2.getString("title"));
     }
 }
 

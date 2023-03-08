@@ -1,6 +1,7 @@
 package model;
 
 
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -70,5 +71,15 @@ public class BookTest {
         checkTags.add("Mystery");
         boolean contains = book1.containsTags(checkTags);
         assertFalse(contains);
+    }
+
+    @Test
+    void toJsonTest() {
+        JSONObject b1 = book1.toJson();
+        assertEquals(b1.get("title"), "Book");
+        assertEquals(b1.get("author"), "Author");
+        assertEquals(b1.getInt("rating"), 5);
+        assertEquals(b1.getInt("yearRead"), 2023);
+        assertEquals(b1.getString("genre"), "Genre");
     }
 }
