@@ -23,14 +23,6 @@
         ]
     },
     {
-        "yearRead": 2019,
-        "author": "J K Rowling",
-        "rating": 4,
-        "genre": "YA",
-        "title": "Harry Potter and the Philosopher's Stone",
-        "tags": []
-    },
-    {
         "yearRead": 2021,
         "author": "Marget Atwood",
         "rating": 5,
@@ -44,6 +36,14 @@
         "rating": 4,
         "genre": "Dystopian",
         "title": "1984",
+        "tags": []
+    },
+    {
+        "yearRead": 2017,
+        "author": "Suzanne Collins",
+        "rating": 4,
+        "genre": "YA",
+        "title": "The Hunger Games",
         "tags": []
     }
 ]}
