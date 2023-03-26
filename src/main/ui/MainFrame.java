@@ -1,16 +1,22 @@
 package ui;
 
+import model.Book;
+import model.Library;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class MainFrame {
     private JFrame frame;
     private SplashFrame splash;
     private MainFrame reference = this;
+    private Library library;
 
     public MainFrame() {
-        //showSplashScreen();
+        library = new Library();
+        showSplashScreen();
         initialize();
     }
 
@@ -89,7 +95,7 @@ public class MainFrame {
     }
 
     private void addLoadButton() {
-        JButton loadButton = new JButton("Save");
+        JButton loadButton = new JButton("Load");
         loadButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -106,6 +112,25 @@ public class MainFrame {
 
     public void hide() {
         frame.setVisible(false);
+    }
+
+    public void addBookToLibrary(Book b) {
+        library.addBook(b);
+    }
+
+    public void testOutput() {
+        ArrayList<Book> books = library.getBooks();
+        ArrayList<String> names = new ArrayList<>();
+        for (Book b: books) {
+            names.add(b.getTitle());
+        }
+        outputAL(names);
+    }
+
+    private void outputAL(ArrayList al) {
+        for (int i = 0; i < al.size(); i++) {
+            System.out.println(al.get(i));
+        }
     }
 
 }
