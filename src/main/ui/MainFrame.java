@@ -1,14 +1,13 @@
 package ui;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
 
 public class MainFrame {
     private JFrame frame;
     private SplashFrame splash;
+    private MainFrame reference = this;
 
     public MainFrame() {
         //showSplashScreen();
@@ -45,7 +44,8 @@ public class MainFrame {
         addBookButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Books being added");
+                AddBookFrame addBookFrame = new AddBookFrame(reference);
+                frame.setVisible(false);
             }
         });
         addBookButton.setBounds(300, 30, 200, 60);
@@ -98,6 +98,14 @@ public class MainFrame {
         });
         loadButton.setBounds(415, 300, 200, 60);
         frame.getContentPane().add(loadButton);
+    }
+
+    public void show() {
+        frame.setVisible(true);
+    }
+
+    public void hide() {
+        frame.setVisible(false);
     }
 
 }
