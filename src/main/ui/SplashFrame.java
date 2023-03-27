@@ -21,7 +21,7 @@ public class SplashFrame {
         JLabel image = new JLabel();
         image.setIcon(splash);
         Dimension size = image.getPreferredSize();
-        frame.setBounds(400, 120, size.width, size.height);
+        frame.setBounds(400, 170, size.width, size.height);
         image.setBounds(0, 0, size.width, size.height);
         frame.getContentPane().add(image);
         frame.setVisible(true);
