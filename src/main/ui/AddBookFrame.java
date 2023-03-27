@@ -7,6 +7,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+// A window that allows features of a book to be input and adds the book to library
 public class AddBookFrame {
 
     private JFrame frame;
