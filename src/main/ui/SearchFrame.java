@@ -49,6 +49,8 @@ public class SearchFrame {
             public void actionPerformed(ActionEvent e) {
                 String search = author.getText();
                 ArrayList<String> searchResults = lib.findAuthor(search);
+                new DisplayResultsFrame(searchResults, referenceBack);
+                frame.setVisible(false);
             }
         });
         authorButton.setBounds(450, 45, 200, 60);
@@ -66,6 +68,8 @@ public class SearchFrame {
             public void actionPerformed(ActionEvent e) {
                 int search = Integer.parseInt(rating.getText());
                 ArrayList<String> searchResults = lib.findRating(search);
+                new DisplayResultsFrame(searchResults, referenceBack);
+                frame.setVisible(false);
             }
         });
         ratingButton.setBounds(450, 135, 200, 60);
@@ -83,6 +87,8 @@ public class SearchFrame {
             public void actionPerformed(ActionEvent e) {
                 int search = Integer.parseInt(yearRead.getText());
                 ArrayList<String> searchResults = lib.findYear(search);
+                new DisplayResultsFrame(searchResults, referenceBack);
+                frame.setVisible(false);
             }
         });
         yearReadButton.setBounds(450, 220, 200, 60);
@@ -100,6 +106,8 @@ public class SearchFrame {
             public void actionPerformed(ActionEvent e) {
                 String search = genre.getText();
                 ArrayList<String> searchResults = lib.findGenre(search);
+                new DisplayResultsFrame(searchResults, referenceBack);
+                frame.setVisible(false);
             }
         });
         genreButton.setBounds(450, 305, 200, 60);
