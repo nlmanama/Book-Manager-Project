@@ -21,8 +21,8 @@ public class MessageFrame {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(null);
 
-        JLabel display = new JLabel(message);
-        display.setBounds(100, -20, 200, 175);
+        JLabel display = new JLabel(message, SwingConstants.CENTER);
+        display.setBounds(75, 20, 250, 60);
         frame.getContentPane().add(display);
 
         JButton backButton = new JButton("Done");
