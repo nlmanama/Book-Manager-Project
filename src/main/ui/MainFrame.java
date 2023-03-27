@@ -37,6 +37,7 @@ public class MainFrame {
         frame.getContentPane().setLayout(null);
 
         addBookButton();
+        deleteBookButton();
         addViewLibraryButton();
         addFindBookButton();
         addSaveButton();
@@ -64,8 +65,21 @@ public class MainFrame {
                 frame.setVisible(false);
             }
         });
-        addBookButton.setBounds(300, 30, 200, 60);
+        addBookButton.setBounds(185, 30, 200, 60);
         frame.getContentPane().add(addBookButton);
+    }
+
+    private void deleteBookButton() {
+        JButton deleteBookButton = new JButton("Delete Book");
+        deleteBookButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                DeleteBookFrame deleteBookFrame = new DeleteBookFrame(reference);
+                frame.setVisible(false);
+            }
+        });
+        deleteBookButton.setBounds(415, 30, 200, 60);
+        frame.getContentPane().add(deleteBookButton);
     }
 
     private void addViewLibraryButton() {
@@ -140,6 +154,10 @@ public class MainFrame {
 
     public void addBookToLibrary(Book b) {
         library.addBook(b);
+    }
+
+    public boolean deleteBookFromLibrary(String title) {
+        return library.deleteBook(title);
     }
 
 }
