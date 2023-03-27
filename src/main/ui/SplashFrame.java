@@ -17,7 +17,7 @@ public class SplashFrame {
         frame.setLayout(null);
 
 
-        ImageIcon splash = new ImageIcon("src/main/ui/DraftSplash.JPG");
+        ImageIcon splash = new ImageIcon("src/main/ui/SplashArt.png");
         JLabel image = new JLabel();
         image.setIcon(splash);
         Dimension size = image.getPreferredSize();

@@ -24,7 +24,7 @@ public class MainFrame {
 
     public MainFrame() {
         library = new Library();
-        //showSplashScreen();
+        showSplashScreen();
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
         initialize();
@@ -49,7 +49,7 @@ public class MainFrame {
     private void showSplashScreen() {
         try {
             splash = new SplashFrame();
-            Thread.sleep(2000);
+            Thread.sleep(3000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
