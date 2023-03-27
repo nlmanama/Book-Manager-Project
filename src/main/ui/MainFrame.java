@@ -86,7 +86,8 @@ public class MainFrame {
         findBookButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Books being found");
+                SearchFrame searchFrame = new SearchFrame(library, reference);
+                frame.setVisible(false);
             }
         });
         findBookButton.setBounds(300, 210, 200, 60);
