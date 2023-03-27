@@ -34,6 +34,24 @@ storing and sorting of books in an easy way would be the ideal project to create
 - As a user, I want to have the option to save my library to a file
 - As a user, I want to have the option to load my library from a file
 
+### Instructions for Graders
+- You can generate the first required action related to adding Xs to a Y by clicking the Add Book button at the top 
+  of the opening window. This opens up a new window that allows features of a book to be entered. Clicking the new Add 
+  Book button will add a Book object to the Library object.
+- You can generate the second required action related to adding Xs to a Y by clicking the Find Book button. This 
+  opens up a window where you can choose one feature of a book to search the library with, enter the specific 
+  feature and click search. This opens up a result window with the result of the filter. 
+- Another action related to the adding of Xs to a Y is can be accessed with by clicking the Delete Book button. This 
+  opens up a window prompting the title of the book to delete, clicking Delete will remove a book with such title 
+  from the library.
+- You can locate my visual component when the application starts, it appears as the splash screen to the application.
+- You can save the state of my application by clicking the Save button in the main window.
+- You can load the state of my application by clicking the Load button in the main window.
+
 #### Credit
 Classes, methods, and tests relating to data persistence, specifically working with the JSON library is based off of 
 the example JsonSerializationDemo project.
+
+The use of JTable was based off of the example here: https://www.geeksforgeeks.org/java-swing-jtable/
+
+The visual component (showing a JPG) was based off of the example here: https://www.codespeedy.com/how-to-add-an-image-in-jframe/
