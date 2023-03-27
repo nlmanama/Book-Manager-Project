@@ -2,10 +2,14 @@ package ui;
 
 import model.Book;
 import model.Library;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class MainFrame {
@@ -14,9 +18,15 @@ public class MainFrame {
     private MainFrame reference = this;
     private Library library;
 
+    private static final String JSON_STORE = "./data/library.json";
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
+
     public MainFrame() {
         library = new Library();
         //showSplashScreen();
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
         initialize();
     }
 
@@ -88,7 +98,14 @@ public class MainFrame {
         saveButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Saving stuff");
+                try {
+                    jsonWriter.open();
+                    jsonWriter.write(library);
+                    jsonWriter.close();
+                    System.out.println("Saved library to " + JSON_STORE);
+                } catch (FileNotFoundException ex) {
+                    System.out.println("Unable to write to file: " + JSON_STORE);
+                }
             }
         });
         saveButton.setBounds(185, 300, 200, 60);
@@ -100,7 +117,12 @@ public class MainFrame {
         loadButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Stuff loaded");
+                try {
+                    library = jsonReader.read();
+                    System.out.println("Loaded library from " + JSON_STORE);
+                } catch (IOException ex) {
+                    System.out.println("Unable to read from file: " + JSON_STORE);
+                }
             }
         });
         loadButton.setBounds(415, 300, 200, 60);
