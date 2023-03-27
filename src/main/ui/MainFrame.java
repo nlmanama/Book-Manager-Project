@@ -16,7 +16,7 @@ public class MainFrame {
 
     public MainFrame() {
         library = new Library();
-        showSplashScreen();
+        //showSplashScreen();
         initialize();
     }
 
@@ -63,7 +63,8 @@ public class MainFrame {
         viewLibrary.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Viewing in progress");
+                ViewLibraryFrame viewFrame = new ViewLibraryFrame(library, reference);
+                frame.setVisible(false);
             }
         });
         viewLibrary.setBounds(300, 120, 200, 60);
