@@ -107,7 +107,6 @@ public class AddBookFrame {
                 frame.setVisible(false);
                 Book bookMade = createBook();
                 referenceBack.addBookToLibrary(bookMade);
-                referenceBack.testOutput();
             }
         });
         enterButton.setBounds(300, 300, 200, 60);

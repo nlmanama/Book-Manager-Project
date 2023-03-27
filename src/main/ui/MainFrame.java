@@ -102,9 +102,9 @@ public class MainFrame {
                     jsonWriter.open();
                     jsonWriter.write(library);
                     jsonWriter.close();
-                    System.out.println("Saved library to " + JSON_STORE);
+                    new MessageFrame("Saved library to " + JSON_STORE);
                 } catch (FileNotFoundException ex) {
-                    System.out.println("Unable to write to file: " + JSON_STORE);
+                    new MessageFrame("Unable to write to file: " + JSON_STORE);
                 }
             }
         });
@@ -119,9 +119,9 @@ public class MainFrame {
             public void actionPerformed(ActionEvent e) {
                 try {
                     library = jsonReader.read();
-                    System.out.println("Loaded library from " + JSON_STORE);
+                    new MessageFrame("Loaded library from " + JSON_STORE);
                 } catch (IOException ex) {
-                    System.out.println("Unable to read from file: " + JSON_STORE);
+                    new MessageFrame("Unable to read from file: " + JSON_STORE);
                 }
             }
         });
@@ -139,21 +139,6 @@ public class MainFrame {
 
     public void addBookToLibrary(Book b) {
         library.addBook(b);
-    }
-
-    public void testOutput() {
-        ArrayList<Book> books = library.getBooks();
-        ArrayList<String> names = new ArrayList<>();
-        for (Book b: books) {
-            names.add(b.getTitle());
-        }
-        outputAL(names);
-    }
-
-    private void outputAL(ArrayList al) {
-        for (int i = 0; i < al.size(); i++) {
-            System.out.println(al.get(i));
-        }
     }
 
 }
