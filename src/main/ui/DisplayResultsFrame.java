@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+// A window that displays the result of a search
 public class DisplayResultsFrame {
     private ArrayList<String> results;
     private MainFrame referenceBack;
@@ -15,12 +16,16 @@ public class DisplayResultsFrame {
     private String[][] display;
     private String[] columnName = {"Book Titles"};
 
+    // REQUIRES: ref be the original MainFrame, titles be an ArrayList of String
+    // EFFECTS: create a frame that displays the name of the books found in FindBook
     public DisplayResultsFrame(ArrayList<String> titles, MainFrame ref) {
         this.results = titles;
         this.referenceBack = ref;
         initialize();
     }
 
+    // MODIFIES: this
+    // EFFECTS: creates the frame and adds features to it
     private void initialize() {
         frame = new JFrame();
         frame.setBounds(400, 170, 800, 450);
@@ -33,6 +38,8 @@ public class DisplayResultsFrame {
         frame.setVisible(true);
     }
 
+    // MODIFIES: this, referenceBack
+    // EFFECTS: adds JButton to frame that hides frame and show the MainFrame
     private void addBackButton() {
         JButton backButton = new JButton("Back");
         backButton.addActionListener(new ActionListener() {
@@ -46,6 +53,8 @@ public class DisplayResultsFrame {
         frame.getContentPane().add(backButton);
     }
 
+    // MODIFIES: this
+    // EFFECTS: create a JTable with all the titles of the books, adds it to frame
     private void showBooks() {
         convertTo2DArray();
         table = new JTable(display, columnName);
@@ -57,6 +66,8 @@ public class DisplayResultsFrame {
         frame.getContentPane().add(scroll);
     }
 
+    // MODIFIES: this
+    // EFFECTS: create a 2D array of the titles of the books
     private void convertTo2DArray() {
         display = new String[results.size()][1];
         for (int i = 0; i < results.size(); i++) {
