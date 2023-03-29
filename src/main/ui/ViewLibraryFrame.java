@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+// A window that shows all books in the library
 public class ViewLibraryFrame {
     private Library library;
     private MainFrame referenceBack;
@@ -16,12 +17,16 @@ public class ViewLibraryFrame {
     private String[][] display;
     private String[] columnName = {"Title", "Author", "Rating", "Year Read", "Genre"};
 
+    // REQUIRES: l be a Library and ref be the MainFrame object that created this
+    // EFFECTS: construct a frame to show all books, with the library to be shown and a reference back to the MainFrame
     public ViewLibraryFrame(Library l, MainFrame ref) {
         library = l;
         referenceBack = ref;
         initialize();
     }
 
+    // MODIFIES: this
+    // EFFECTS: creates the frame and adds features to it
     private void initialize() {
         frame = new JFrame();
         frame.setBounds(400, 170, 800, 450);
@@ -34,6 +39,8 @@ public class ViewLibraryFrame {
         frame.setVisible(true);
     }
 
+    // MODIFIES: this, referenceBack
+    // EFFECTS: adds a JButton to the frame that returns to the MainFrame and hides this frame
     private void addBackButton() {
         JButton backButton = new JButton("Back");
         backButton.addActionListener(new ActionListener() {
@@ -47,6 +54,8 @@ public class ViewLibraryFrame {
         frame.getContentPane().add(backButton);
     }
 
+    // MODIFIES: this
+    // EFFECTS: create a JTable of all the Book objects in library that showcases all their features, adds it to frame
     private void showBooks() {
         convertTo2DArray();
         table = new JTable(display, columnName);
@@ -58,6 +67,8 @@ public class ViewLibraryFrame {
         frame.getContentPane().add(scroll);
     }
 
+    // MODIFIES: this
+    // EFFECTS: create a 2D array of all the books in the library with their features
     private void convertTo2DArray() {
         ArrayList<Book> books = library.getBooks();
         display = new String[books.size()][5];
