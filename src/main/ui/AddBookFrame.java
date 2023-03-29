@@ -19,11 +19,16 @@ public class AddBookFrame {
 
     private MainFrame referenceBack;
 
+    // REQUIRES: ref be the MainFrame object that created this object
+    // EFFECTS: Construct a frame that allows a book to be added, has a reference to the MainFrame object that
+    // created this frame.
     public AddBookFrame(MainFrame ref) {
         initialize();
         referenceBack = ref;
     }
 
+    // MODIFIES: this
+    // EFFECTS: create the JFrame for the window, adds features to the frame
     private void initialize() {
         frame = new JFrame();
         frame.setBounds(400, 170, 800, 450);
@@ -40,10 +45,14 @@ public class AddBookFrame {
         frame.setVisible(true);
     }
 
+    // MODIFIES: this
+    // EFFECTS: hides the frame
     public void hide() {
         frame.setVisible(false);
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds JLabel to prompt for a title, and the JTextField to enter the title
     private void addTitleArea() {
         JLabel titleLabel = new JLabel("Title:");
         titleLabel.setBounds(250, 30, 200, 30);
@@ -55,6 +64,8 @@ public class AddBookFrame {
         frame.getContentPane().add(title);
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds JLabel to prompt for an author, and the JTextField to enter the author
     private void addAuthorArea() {
         JLabel authorLabel = new JLabel("Author:");
         authorLabel.setBounds(250, 80, 200, 30);
@@ -66,6 +77,8 @@ public class AddBookFrame {
         frame.getContentPane().add(author);
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds JLabel to prompt for a rating, and the JTextField to enter the rating
     private void addRatingArea() {
         JLabel ratingLabel = new JLabel("Rating:");
         ratingLabel.setBounds(250, 130, 200, 30);
@@ -77,6 +90,8 @@ public class AddBookFrame {
         frame.getContentPane().add(rating);
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds JLabel to prompt for the year read, and the JTextField to enter the year read
     private void addYearReadArea() {
         JLabel yearLabel = new JLabel("Year read:");
         yearLabel.setBounds(250, 180, 200, 30);
@@ -88,6 +103,8 @@ public class AddBookFrame {
         frame.getContentPane().add(yearRead);
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds JLabel to prompt for a genre, and the JTextField to enter the genre
     private void addGenreArea() {
         JLabel genreLabel = new JLabel("Genre:");
         genreLabel.setBounds(250, 230, 200, 30);
@@ -99,6 +116,8 @@ public class AddBookFrame {
         frame.getContentPane().add(genre);
     }
 
+    // MODIFIES: this, referenceBack
+    // EFFECTS: adds a JButton that adds a book with the entered feature to the library, hides the frame
     private void addBookButton() {
         JButton enterButton = new JButton("Add Book");
         enterButton.addActionListener(new ActionListener() {
@@ -114,6 +133,8 @@ public class AddBookFrame {
         frame.getContentPane().add(enterButton);
     }
 
+    // REQUIRES: JTextField rating and JTextField yearRead to have integers entered in
+    // EFFECTS: constructs and return a Book object with featured entered in
     private Book createBook() {
         String ti = title.getText();
         String au = author.getText();
