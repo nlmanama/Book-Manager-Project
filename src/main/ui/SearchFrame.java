@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+// A window to search for books by their features
 public class SearchFrame {
 
     private JFrame frame;
@@ -18,12 +19,17 @@ public class SearchFrame {
     private JTextField yearRead;
     private JTextField genre;
 
+    // REQUIRES: l is a Library, ref is the MainFrame object that created this
+    // EFFECTS: Create a frame that allows features of a book to be entered and search for, with the library being
+    // searched and a reference to the MainFrame object that created this
     public SearchFrame(Library l, MainFrame ref) {
         this.lib = l;
         this.referenceBack = ref;
         initialize();
     }
 
+    // MODIFIES: this
+    // EFFECTS: creates the frame and adds features to it
     private void initialize() {
         frame = new JFrame();
         frame.setBounds(400, 170, 800, 450);
@@ -38,6 +44,9 @@ public class SearchFrame {
         frame.setVisible(true);
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds the JTextField to enter the author, add a JButton to that searches for books with this author
+    // and show results
     private void searchByAuthor() {
         author = new JTextField();
         author.setBounds(150, 45, 200, 60);
@@ -57,6 +66,9 @@ public class SearchFrame {
         frame.getContentPane().add(authorButton);
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds the JTextField to enter the rating, add a JButton to that searches for books with this rating
+    // and show results
     private void searchByRating() {
         rating = new JTextField();
         rating.setBounds(150, 135, 200, 60);
@@ -76,6 +88,9 @@ public class SearchFrame {
         frame.getContentPane().add(ratingButton);
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds the JTextField to enter the year read, add a JButton to that searches for books read this year
+    // and show results
     private void searchByYear() {
         yearRead = new JTextField();
         yearRead.setBounds(150, 220, 200, 60);
@@ -95,6 +110,9 @@ public class SearchFrame {
         frame.getContentPane().add(yearReadButton);
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds the JTextField to enter the genre, add a JButton to that searches for books with this genre
+    // and show results
     private void searchByGenre() {
         genre = new JTextField();
         genre.setBounds(150, 305, 200, 60);
