@@ -5,16 +5,21 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+// A window that displays a short message to the user
 public class MessageFrame {
 
     private JFrame frame;
     private String message;
 
+    // REQUIRES: mes be a String
+    // EFFECTS: creates a frame with the message to be displayed
     public MessageFrame(String mes) {
         this.message = mes;
         initialize();
     }
 
+    // MODIFIES: this
+    // EFFECTS: creates the frame with the JLabel that shows the message, with a Done button that hides the frame
     private void initialize() {
         frame = new JFrame();
         frame.setBounds(600, 270, 400, 250);
