@@ -6,12 +6,14 @@ import persistence.JsonReader;
 import persistence.JsonWriter;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
+// The window with the main menu of the application
 public class MainFrame {
     private JFrame frame;
     private SplashFrame splash;
@@ -22,6 +24,8 @@ public class MainFrame {
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
 
+    // EFFECTS: create a MainFrame with a JsonWriter and a JsonReader to the data file, a new library and show the
+    // splash screen
     public MainFrame() {
         library = new Library();
         showSplashScreen();
@@ -30,11 +34,14 @@ public class MainFrame {
         initialize();
     }
 
+    // MODIFIES: this
+    // EFFECTS: creates the frame and adds features to it
     private void initialize() {
         frame = new JFrame();
         frame.setBounds(400, 170, 800, 450);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(null);
+        frame.setBackground(Color.WHITE);
 
         addBookButton();
         deleteBookButton();
@@ -46,6 +53,8 @@ public class MainFrame {
         frame.setVisible(true);
     }
 
+    // MODIFIES: this
+    // EFFECTS: show the splash screen for a few seconds
     private void showSplashScreen() {
         try {
             splash = new SplashFrame();
@@ -56,6 +65,8 @@ public class MainFrame {
         splash.hide();
     }
 
+    // MODIFIES: this
+    // EFFECTS: add a JButton to frame that opens the window to add a book, also hides the main frame
     private void addBookButton() {
         JButton addBookButton = new JButton("Add Book");
         addBookButton.addActionListener(new ActionListener() {
@@ -69,6 +80,8 @@ public class MainFrame {
         frame.getContentPane().add(addBookButton);
     }
 
+    // MODIFIES: this
+    // EFFECTS: add a JButton to frame that opens the window to delete a book, also hides the main frame
     private void deleteBookButton() {
         JButton deleteBookButton = new JButton("Delete Book");
         deleteBookButton.addActionListener(new ActionListener() {
@@ -82,6 +95,8 @@ public class MainFrame {
         frame.getContentPane().add(deleteBookButton);
     }
 
+    // MODIFIES: this
+    // EFFECTS: add a JButton to frame that opens the window to view all books, also hides the main frame
     private void addViewLibraryButton() {
         JButton viewLibrary = new JButton("View Library");
         viewLibrary.addActionListener(new ActionListener() {
@@ -95,6 +110,8 @@ public class MainFrame {
         frame.getContentPane().add(viewLibrary);
     }
 
+    // MODIFIES: this
+    // EFFECTS: add a JButton to frame that opens the window to find books, also hides the main frame
     private void addFindBookButton() {
         JButton findBookButton = new JButton("Find Book");
         findBookButton.addActionListener(new ActionListener() {
@@ -108,6 +125,8 @@ public class MainFrame {
         frame.getContentPane().add(findBookButton);
     }
 
+    // MODIFIES: this
+    // EFFECTS: add a JButton to frame that opens the window to save the current library, also hides the main frame
     private void addSaveButton() {
         JButton saveButton = new JButton("Save");
         saveButton.addActionListener(new ActionListener() {
@@ -127,6 +146,8 @@ public class MainFrame {
         frame.getContentPane().add(saveButton);
     }
 
+    // MODIFIES: this
+    // EFFECTS: add a JButton to frame that opens the window to load up the stored library, also hides the main frame
     private void addLoadButton() {
         JButton loadButton = new JButton("Load");
         loadButton.addActionListener(new ActionListener() {
@@ -144,18 +165,28 @@ public class MainFrame {
         frame.getContentPane().add(loadButton);
     }
 
+    // MODIFIES: this
+    // EFFECTS: show the frame
     public void show() {
         frame.setVisible(true);
     }
 
+    // MODIFIES: this
+    // EFFECTS: hides the frame
     public void hide() {
         frame.setVisible(false);
     }
 
+    // REQUIRES: b is a Book object
+    // MODIFIES: this
+    // EFFECTS: add the given book to the library
     public void addBookToLibrary(Book b) {
         library.addBook(b);
     }
 
+    // REQUIRES: title is a String
+    // MODIFIES: this
+    // EFFECTS: delete the book with the title from library, return the status of the operation
     public boolean deleteBookFromLibrary(String title) {
         return library.deleteBook(title);
     }
