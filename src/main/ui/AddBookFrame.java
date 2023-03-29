@@ -52,7 +52,7 @@ public class AddBookFrame {
     }
 
     // MODIFIES: this
-    // EFFECTS: adds JLabel to prompt for a title, and the JTextField to enter the title
+    // EFFECTS: adds JLabel to prompt for a title, and the JTextField to enter the title, adds both to frame
     private void addTitleArea() {
         JLabel titleLabel = new JLabel("Title:");
         titleLabel.setBounds(250, 30, 200, 30);
@@ -65,7 +65,7 @@ public class AddBookFrame {
     }
 
     // MODIFIES: this
-    // EFFECTS: adds JLabel to prompt for an author, and the JTextField to enter the author
+    // EFFECTS: adds JLabel to prompt for an author, and the JTextField to enter the author, adds both to frame
     private void addAuthorArea() {
         JLabel authorLabel = new JLabel("Author:");
         authorLabel.setBounds(250, 80, 200, 30);
@@ -78,7 +78,7 @@ public class AddBookFrame {
     }
 
     // MODIFIES: this
-    // EFFECTS: adds JLabel to prompt for a rating, and the JTextField to enter the rating
+    // EFFECTS: adds JLabel to prompt for a rating, and the JTextField to enter the rating, adds both to frame
     private void addRatingArea() {
         JLabel ratingLabel = new JLabel("Rating:");
         ratingLabel.setBounds(250, 130, 200, 30);
@@ -91,7 +91,7 @@ public class AddBookFrame {
     }
 
     // MODIFIES: this
-    // EFFECTS: adds JLabel to prompt for the year read, and the JTextField to enter the year read
+    // EFFECTS: adds JLabel to prompt for the year read, and the JTextField to enter the year read, adds both to frame
     private void addYearReadArea() {
         JLabel yearLabel = new JLabel("Year read:");
         yearLabel.setBounds(250, 180, 200, 30);
@@ -104,7 +104,7 @@ public class AddBookFrame {
     }
 
     // MODIFIES: this
-    // EFFECTS: adds JLabel to prompt for a genre, and the JTextField to enter the genre
+    // EFFECTS: adds JLabel to prompt for a genre, and the JTextField to enter the genre, adds both to frame
     private void addGenreArea() {
         JLabel genreLabel = new JLabel("Genre:");
         genreLabel.setBounds(250, 230, 200, 30);
@@ -117,7 +117,7 @@ public class AddBookFrame {
     }
 
     // MODIFIES: this, referenceBack
-    // EFFECTS: adds a JButton that adds a book with the entered feature to the library, hides the frame
+    // EFFECTS: adds a JButton to frame that adds a book with the entered feature to the library, hides the frame
     private void addBookButton() {
         JButton enterButton = new JButton("Add Book");
         enterButton.addActionListener(new ActionListener() {
