@@ -1,20 +1,20 @@
 package ui;
 
 import model.Book;
+import model.Event;
+import model.EventLog;
 import model.Library;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
 
 // The window with the main menu of the application
-public class MainFrame {
+public class MainFrame implements WindowListener {
     private JFrame frame;
     private SplashFrame splash;
     private MainFrame reference = this;
@@ -50,6 +50,7 @@ public class MainFrame {
         addSaveButton();
         addLoadButton();
 
+        frame.addWindowListener(this);
         frame.setVisible(true);
     }
 
@@ -189,6 +190,43 @@ public class MainFrame {
     // EFFECTS: delete the book with the title from library, return the status of the operation
     public boolean deleteBookFromLibrary(String title) {
         return library.deleteBook(title);
+    }
+
+
+    private void displayLog(EventLog el) {
+        for (Event e : el) {
+            System.out.println(e.toString() + "\n");
+        }
+    }
+
+
+    @Override
+    public void windowOpened(WindowEvent e) {
+    }
+
+    @Override
+    public void windowClosing(WindowEvent e) {
+        displayLog(EventLog.getInstance());
+    }
+
+    @Override
+    public void windowClosed(WindowEvent e) {
+    }
+
+    @Override
+    public void windowIconified(WindowEvent e) {
+    }
+
+    @Override
+    public void windowDeiconified(WindowEvent e) {
+    }
+
+    @Override
+    public void windowActivated(WindowEvent e) {
+    }
+
+    @Override
+    public void windowDeactivated(WindowEvent e) {
     }
 
 }
