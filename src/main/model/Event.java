@@ -24,6 +24,7 @@ public class Event {
         return description;
     }
 
+    // See java.lang.Object.equals
     @Override
     public boolean equals(Object other) {
         if (other == null) {
@@ -38,6 +39,7 @@ public class Event {
                 && this.description.equals(otherEvent.description));
     }
 
+    // See java.lang.Object.hashCode
     @Override
     public int hashCode() {
         return (HASH_CONSTANT * dateLogged.hashCode() + description.hashCode());
