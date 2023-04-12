@@ -13,7 +13,7 @@ import java.awt.event.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-// The window with the main menu of the application
+// The window with the main menu of the application and that has a window listener
 public class MainFrame implements WindowListener {
     private JFrame frame;
     private SplashFrame splash;
@@ -49,8 +49,8 @@ public class MainFrame implements WindowListener {
         addFindBookButton();
         addSaveButton();
         addLoadButton();
-
         frame.addWindowListener(this);
+
         frame.setVisible(true);
     }
 
@@ -193,6 +193,8 @@ public class MainFrame implements WindowListener {
     }
 
 
+    // REQUIRES: el be an EventLog
+    // EFFECTS: outputs all the event in the event log
     private void displayLog(EventLog el) {
         for (Event e : el) {
             System.out.println(e.toString() + "\n");
@@ -204,6 +206,7 @@ public class MainFrame implements WindowListener {
     public void windowOpened(WindowEvent e) {
     }
 
+    // EFFECTS: Outputs all the events in the single EventLog when the window is closed
     @Override
     public void windowClosing(WindowEvent e) {
         displayLog(EventLog.getInstance());
