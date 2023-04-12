@@ -19,7 +19,7 @@ public class EventLog implements Iterable<Event> {
     }
 
     // MODIFIES: this
-    // EFFECTS: return the instance of EventLog, if none exist then creates it
+    // EFFECTS: return the instance of EventLog, if none exist then creates it too
     public static EventLog getInstance() {
         if (theLog == null) {
             theLog = new EventLog();
@@ -42,6 +42,7 @@ public class EventLog implements Iterable<Event> {
         logEvent(new Event("Event log cleared."));
     }
 
+    // See java.util.Collection.iterator
     @Override
     public Iterator<Event> iterator() {
         return events.iterator();
