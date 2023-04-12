@@ -49,20 +49,23 @@ storing and sorting of books in an easy way would be the ideal project to create
 - You can load the state of my application by clicking the Load button in the main window.
 
 ### Phase 4: Task 2
-Wed Apr 12 10:32:19 PDT 2023<br/>
-Added Book 'Book1' to Library.
+Wed Apr 12 16:20:19 PDT 2023<br/>
+Added Book 'Title1' to Library.
 
-Wed Apr 12 10:32:37 PDT 2023<br/>
-Added Book 'Book2' to Library.
+Wed Apr 12 16:20:31 PDT 2023<br/>
+Added Book 'Title2' to Library.
 
-Wed Apr 12 10:32:46 PDT 2023<br/>
+Wed Apr 12 16:20:45 PDT 2023<br/>
 Library filtered to find books with the same rating.
 
-Wed Apr 12 10:33:01 PDT 2023<br/>
-Deleted Book 'Book1' from Library.
+Wed Apr 12 16:20:52 PDT 2023<br/>
+Library filtered to find books with the same genre.
 
-Wed Apr 12 10:33:08 PDT 2023<br/>
-Failed to delete Book 'Book5' from Library.
+Wed Apr 12 16:20:57 PDT 2023<br/>
+Deleted Book 'Title1' from Library.
+
+Wed Apr 12 16:21:02 PDT 2023<br/>
+Failed to delete Book 'Title5' from Library.
 
 
 #### Credit
