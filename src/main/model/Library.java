@@ -21,6 +21,7 @@ public class Library {
     public void addBook(String ti, String au, int rat, int year, String gen) {
         Book b = new Book(ti, au, rat, year, gen);
         books.add(b);
+        EventLog.getInstance().logEvent(new Event("Added Book '" + ti + "' to Library."));
     }
 
     // REQUIRES: b is a Book object
@@ -28,6 +29,7 @@ public class Library {
     // EFFECTS: add book to library
     public void addBook(Book b) {
         books.add(b);
+        EventLog.getInstance().logEvent(new Event("Added Book '" + b.getTitle() + "' to Library."));
     }
 
     // REQUIRES: title be String
@@ -43,8 +45,10 @@ public class Library {
         }
         if (index >= 0) {
             books.remove(index);
+            EventLog.getInstance().logEvent(new Event("Deleted Book '" + title + "' from Library."));
             return true;
         } else {
+            EventLog.getInstance().logEvent(new Event("Failed to delete Book '" + title + "' from Library."));
             return false;
         }
     }
@@ -59,7 +63,7 @@ public class Library {
                 bookName.add(b.getTitle());
             }
         }
-
+        EventLog.getInstance().logEvent(new Event("Library filtered to find books with the same author."));
         return bookName;
     }
 
@@ -74,6 +78,7 @@ public class Library {
                 bookName.add(b.getTitle());
             }
         }
+        EventLog.getInstance().logEvent(new Event("Library filtered to find books with the same genre."));
         return bookName;
     }
 
@@ -87,6 +92,7 @@ public class Library {
                 bookName.add(b.getTitle());
             }
         }
+        EventLog.getInstance().logEvent(new Event("Library filtered to find books with the same rating."));
         return bookName;
     }
 
@@ -100,6 +106,7 @@ public class Library {
                 bookName.add(b.getTitle());
             }
         }
+        EventLog.getInstance().logEvent(new Event("Library filtered to find books with the same year read."));
         return bookName;
     }
 
