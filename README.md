@@ -67,6 +67,25 @@ Deleted Book 'Title1' from Library.
 Wed Apr 12 16:21:02 PDT 2023<br/>
 Failed to delete Book 'Title5' from Library.
 
+### Phase 4: Task 3
+Currently, I have two classes that perform very similar tasks, the class DisplayResultsFrame and the class 
+ViewLibraryFrame. Both represent a window that would display a list of books. The ViewLibraryFrame displays all the 
+books in the library, whereas the DisplayResultsFrame displays only the books found after a filtering search. The 
+reason why there are two different classes for this is because the search methods I have in the Library class to 
+support the filtering returns an ArrayList of String (containing the title of the books found), instead of returning 
+an ArrayList of Book objects. The ViewLibraryFrame is designed to display a JTable with all the features of the book,
+whereas the DisplayResultsFrame is designed to only display the books' title. However, there are many similarities, 
+including: creating frames of the same dimension; using a JTable in a Scroll Panel; and populating the JTable with a 
+2D array made from an ArrayList. 
+
+The refactoring I am imaging would be to reduce the duplication by combining the two classes into one, performing the 
+function of displaying books. To do this, I would need to refactor the filtering methods I have in the Library class 
+to return an ArrayList of Book objects compatible with the ViewLibraryFrame. I would also need to connect the 
+SearchFrame with the ViewLibraryFrame. Other changes within the Library class and ViewLibraryFrame class may also be 
+necessary to facilitate this refactoring. The first reason for this refactoring would be to reduce duplicate code in 
+the two classes. The second reason would be to improve the organization of the system, reducing the number of 
+classes. This would leave less room for future errors. 
+
 
 #### Credit
 Classes, methods, and tests relating to data persistence, specifically working with the JSON library is based off of 
