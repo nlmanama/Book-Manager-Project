@@ -1,5 +1,4 @@
-# 210 Personal Project
-## Book Manager
+# Book Manager Project
 
 ### Proposal
 
@@ -34,62 +33,9 @@ storing and sorting of books in an easy way would be the ideal project to create
 - As a user, I want to have the option to save my library to a file
 - As a user, I want to have the option to load my library from a file
 
-### Instructions for Graders
-- You can generate the first required action related to adding Xs to a Y by clicking the Add Book button at the top 
-  of the opening window. This opens up a new window that allows features of a book to be entered. Clicking the new Add 
-  Book button will add a Book object to the Library object.
-- You can generate the second required action related to adding Xs to a Y by clicking the Find Book button. This 
-  opens up a window where you can choose one feature of a book to search the library with, enter the specific 
-  feature and click search. This opens up a result window with the result of the filter. 
-- Another action related to the adding of Xs to a Y is can be accessed with by clicking the Delete Book button. This 
-  opens up a window prompting the title of the book to delete, clicking Delete will remove a book with such title 
-  from the library.
-- You can locate my visual component when the application starts, it appears as the splash screen to the application.
-- You can save the state of my application by clicking the Save button in the main window.
-- You can load the state of my application by clicking the Load button in the main window.
-
-### Phase 4: Task 2
-Wed Apr 12 16:20:19 PDT 2023<br/>
-Added Book 'Title1' to Library.
-
-Wed Apr 12 16:20:31 PDT 2023<br/>
-Added Book 'Title2' to Library.
-
-Wed Apr 12 16:20:45 PDT 2023<br/>
-Library filtered to find books with the same rating.
-
-Wed Apr 12 16:20:52 PDT 2023<br/>
-Library filtered to find books with the same genre.
-
-Wed Apr 12 16:20:57 PDT 2023<br/>
-Deleted Book 'Title1' from Library.
-
-Wed Apr 12 16:21:02 PDT 2023<br/>
-Failed to delete Book 'Title5' from Library.
-
-### Phase 4: Task 3
-Currently, I have two classes that perform very similar tasks, the class DisplayResultsFrame and the class 
-ViewLibraryFrame. Both represent a window that would display a list of books. The ViewLibraryFrame displays all the 
-books in the library, whereas the DisplayResultsFrame displays only the books found after a filtering search. The 
-reason why there are two different classes for this is because the search methods I have in the Library class to 
-support the filtering returns an ArrayList of String (containing the title of the books found), instead of returning 
-an ArrayList of Book objects. The ViewLibraryFrame is designed to display a JTable with all the features of the book,
-whereas the DisplayResultsFrame is designed to only display the books' title. However, there are many similarities, 
-including: creating frames of the same dimension; using a JTable in a Scroll Panel; and populating the JTable with a 
-2D array made from an ArrayList. 
-
-The refactoring I am imaging would be to reduce the duplication by combining the two classes into one, performing the 
-function of displaying books. To do this, I would need to refactor the filtering methods I have in the Library class 
-to return an ArrayList of Book objects compatible with the ViewLibraryFrame. I would also need to connect the 
-SearchFrame with the ViewLibraryFrame. Other changes within the Library class and ViewLibraryFrame class may also be 
-necessary to facilitate this refactoring. The first reason for this refactoring would be to reduce duplicate code in 
-the two classes. The second reason would be to improve the organization of the system, reducing the number of 
-classes. This would leave less room for future errors. 
-
-
 #### Credit
 Classes, methods, and tests relating to data persistence, specifically working with the JSON library is based off of 
-the example JsonSerializationDemo project.<br/>
+the example JsonSerializationDemo project in CPSC 210 at UBC.<br/>
 The use of JTable was based off the example here: https://www.geeksforgeeks.org/java-swing-jtable/ <br/>
 The visual component (showing a JPG) was based off the example here: https://www.codespeedy.com/how-to-add-an-image-in-jframe/ <br/>
 The use of the WindowListener interface was based off the documentation here: https://docs.oracle.com/javase/tutorial/uiswing/events/windowlistener.html
